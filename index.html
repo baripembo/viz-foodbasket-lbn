@@ -548,11 +548,11 @@ fetch('data/foodbasket.json')
 
       document.getElementById('stat-top-val').textContent = top ? fmt(val(top)) : '—';
       document.getElementById('stat-top-val').style.color = top ? COLOR_POS : '#ccc';
-      document.getElementById('stat-top-name').textContent = top ? top.name_en : 'No increases';
+      document.getElementById('stat-top-name').textContent = top ? `${top.name_en} · ${top.category_en}` : 'No increases';
 
       document.getElementById('stat-bot-val').textContent = bot ? fmt(val(bot)) : '—';
       document.getElementById('stat-bot-val').style.color = bot ? COLOR_NEG : '#ccc';
-      document.getElementById('stat-bot-name').textContent = bot ? bot.name_en : 'No decreases';
+      document.getElementById('stat-bot-name').textContent = bot ? `${bot.name_en} · ${bot.category_en}` : 'No decreases';
 
       document.getElementById('stat-movement').textContent =
         `${rising.length} ↑ · ${falling.length} ↓`;
