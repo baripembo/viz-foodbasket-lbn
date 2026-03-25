@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lebanon Food Basket — Price Change</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://data.humdata.org/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://data.humdata.org/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      font-size: 14px;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #007CE0;
+      padding: 16px 24px 12px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.3;
+    }
+
+    header p.subtitle {
+      font-size: 13px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #555;
+      max-width: 720px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    main {
+      padding: 24px;
+      max-width: 100%;
+    }
+
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .filter-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 4px 10px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      background: #fff;
+      color: #555;
+      cursor: pointer;
+      line-height: 1.4;
+      transition: background 0.1s, color 0.1s, border-color 0.1s;
+    }
+
+    .btn:hover { border-color: #007CE0; color: #007CE0; }
+
+    .btn.active {
+      background: #007CE0;
+      border-color: #007CE0;
+      color: #fff;
+    }
+
+    .btn.active:hover { background: #0066c0; border-color: #0066c0; }
+
+    #chart-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      padding: 16px 16px 16px 0;
+      width: 100%;
+      min-width: 0;
+    }
+
+    #stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      padding: 10px 16px;
+      min-width: 180px;
+      flex: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .stat-sub {
+      font-size: 11px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    #no-results {
+      padding: 32px 24px;
+      color: #888;
+      font-size: 13px;
+      display: none;
+    }
+
+    #tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      display: none;
+      z-index: 100;
+      max-width: 240px;
+    }
+
+    #tooltip strong { font-weight: 700; }
+
+    footer {
+      padding: 12px 24px 24px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .bar { cursor: default; }
+    .bar:hover { opacity: 0.85; }
+
+    .zero-line { stroke: #444; stroke-width: 1; }
+    .tick line { stroke: #e0e0e0; }
+    .tick text { fill: #666; font-size: 11px; font-family: 'Source Sans 3', sans-serif; }
+    .domain { stroke: none; }
+
+    .value-label { font-size: 10px; fill: #555; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="chart-title"></h1>
+  <p class="subtitle" id="chart-subtitle"></p>
+</header>
+
+<main>
+  <p class="description">This chart shows week-over-week and year-over-year price changes for 60 food commodities tracked by Lebanon's Ministry of Economy and Trade. Bars extending right indicate price increases and bars extending left indicate decreases. Use the category and percent change filters to explore specific food groups or price movements.</p>
+  <div id="metric-toggle" style="margin-bottom:16px;">
+    <div class="filter-label" style="margin-bottom:6px;">View</div>
+    <div class="btn-row">
+      <button class="btn active" data-metric="wow">Week-over-Week</button>
+      <button class="btn" data-metric="yoy">Year-over-Year</button>
+    </div>
+  </div>
+
+  <div id="stats">
+    <div class="stat-card">
+      <div class="stat-label">Largest increase</div>
+      <div class="stat-value" id="stat-top-val"></div>
+      <div class="stat-sub" id="stat-top-name"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Largest decrease</div>
+      <div class="stat-value" id="stat-bot-val"></div>
+      <div class="stat-sub" id="stat-bot-name"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Price movement</div>
+      <div class="stat-value" id="stat-movement"></div>
+      <div class="stat-sub" id="stat-movement-sub"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Unchanged</div>
+      <div class="stat-value" id="stat-unchanged"></div>
+      <div class="stat-sub" id="stat-unchanged-sub"></div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <div class="filter-group">
+      <div class="filter-label">Category</div>
+      <div class="btn-row" id="cat-filters"></div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-label">Percent Change</div>
+      <div class="btn-row" id="dir-filters"></div>
+    </div>
+  </div>
+
+  <div id="chart-card">
+    <svg id="chart"></svg>
+    <div id="no-results">No commodities match the current filters.</div>
+  </div>
+</main>
+
+<footer>
+  <span id="source-note"></span>
+</footer>
+
+<div id="tooltip"></div>
+
+<script>
+const MARGIN = { top: 30, right: 90, bottom: 10, left: 90 };
+const ITEM_HEIGHT = 20;
+const COLOR_POS = '#F2645A';
+const COLOR_NEG = '#1EBFB3';
+const COLOR_ZERO = '#ccc';
+
+const METRIC_CONFIG = {
+  wow: {
+    title: 'Lebanon: Week-over-Week Price Change by Commodity',
+    subtitleFn: m => `${m.subtitle} (${m.date_previous} – ${m.date_current})`,
+    field: 'wow_pct',
+    tooltipLabel: 'Week-over-week change',
+  },
+  yoy: {
+    title: 'Lebanon: Year-over-Year Price Change by Commodity',
+    subtitleFn: m => `${m.subtitle} (${m.date_current.replace('2026', '2025')} – ${m.date_current})`,
+    field: 'yoy_pct',
+    tooltipLabel: 'YoY change',
+  },
+};
+
+function fmt(n) {
+  if (n == null) return '—';
+  if (n === 0) return '0%';
+  return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+}
+
+function fmtLBP(n) {
+  if (n == null) return '—';
+  return Math.round(n).toLocaleString('en') + ' LBP';
+}
+
+function maxAbsRounded(items, field) {
+  return Math.ceil(d3.max(items, d => Math.abs(d[field] || 0)) / 5) * 5 || 15;
+}
+
+fetch('data/foodbasket.json')
+  .then(r => r.json())
+  .then(data => {
+    const { meta, items } = data;
+
+    document.getElementById('source-note').innerHTML = `Source: <a href="https://www.economy.gov.lb/en/services/center-for-pricing-policies/mini---basket-weekly-" target="_blank" rel="noopener" style="color:#007CE0;">${meta.source}</a>. Data as of ${meta.date_current}.`;
+
+    // Pre-sort items for each metric
+    const sorted = {
+      wow: [...items].sort((a, b) => (b.wow_pct || 0) - (a.wow_pct || 0)),
+      yoy: [...items].sort((a, b) => (b.yoy_pct || 0) - (a.yoy_pct || 0)),
+    };
+
+    // --- State ---
+    let activeMetric = 'wow';
+    const activeCategories = new Set(items.map(d => d.category_code));
+    let activeDirection = 'all';
+
+    function val(d) { return d[METRIC_CONFIG[activeMetric].field] || 0; }
+
+    function getFilteredItems() {
+      return sorted[activeMetric].filter(d => {
+        if (!activeCategories.has(d.category_code)) return false;
+        const v = val(d);
+        if (activeDirection === 'positive' && !(v > 0)) return false;
+        if (activeDirection === 'negative' && !(v < 0)) return false;
+        if (activeDirection === 'zero' && v !== 0) return false;
+        return true;
+      });
+    }
+
+    // --- Metric toggle ---
+    document.getElementById('metric-toggle').querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeMetric = btn.dataset.metric;
+        document.getElementById('metric-toggle').querySelectorAll('.btn')
+          .forEach(b => b.classList.toggle('active', b === btn));
+        redraw();
+      });
+    });
+
+    // --- Category toggles ---
+    const categories = [...new Map(items.map(d => [d.category_code, d.category_en])).entries()]
+      .map(([code, en]) => ({ code, en }));
+    const catContainer = document.getElementById('cat-filters');
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'btn active';
+      btn.textContent = cat.en;
+      btn.addEventListener('click', () => {
+        if (activeCategories.has(cat.code)) {
+          activeCategories.delete(cat.code);
+          btn.classList.remove('active');
+        } else {
+          activeCategories.add(cat.code);
+          btn.classList.add('active');
+        }
+        redraw();
+      });
+      catContainer.appendChild(btn);
+    });
+
+    // --- Direction filter ---
+    const directions = [
+      { key: 'all', label: 'All' },
+      { key: 'positive', label: '↑ Increases' },
+      { key: 'negative', label: '↓ Decreases' },
+      { key: 'zero', label: '= No change' },
+    ];
+    const dirContainer = document.getElementById('dir-filters');
+    directions.forEach(dir => {
+      const btn = document.createElement('button');
+      btn.className = 'btn' + (dir.key === 'all' ? ' active' : '');
+      btn.textContent = dir.label;
+      btn.addEventListener('click', () => {
+        activeDirection = dir.key;
+        dirContainer.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        redraw();
+      });
+      dirContainer.appendChild(btn);
+    });
+
+    // --- Chart ---
+    const svg = d3.select('#chart');
+    const tooltip = d3.select('#tooltip');
+    const card = document.getElementById('chart-card');
+    const noResults = document.getElementById('no-results');
+
+    function draw(containerW, filtered) {
+      svg.selectAll('*').remove();
+
+      if (filtered.length === 0) {
+        svg.attr('width', 0).attr('height', 0);
+        noResults.style.display = 'block';
+        return;
+      }
+      noResults.style.display = 'none';
+
+      const cfg = METRIC_CONFIG[activeMetric];
+      const maxAbs = maxAbsRounded(filtered, cfg.field);
+      const innerW = Math.max(containerW - MARGIN.left - MARGIN.right, 100);
+      const innerH = filtered.length * ITEM_HEIGHT;
+      const svgH = MARGIN.top + innerH + MARGIN.bottom;
+
+      svg.attr('width', containerW).attr('height', svgH);
+
+      const g = svg.append('g')
+        .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
+
+      const xScale = d3.scaleLinear()
+        .domain([-maxAbs, maxAbs])
+        .range([0, innerW]);
+
+      const yScale = d3.scaleBand()
+        .domain(filtered.map(d => d.code))
+        .range([0, innerH])
+        .padding(0.2);
+
+      // X-axis at top
+      g.append('g')
+        .attr('class', 'x-axis')
+        .call(d3.axisTop(xScale)
+          .ticks(8)
+          .tickFormat(d => d + '%')
+          .tickSizeInner(4)
+          .tickSizeOuter(0))
+        .call(ax => ax.select('.domain').remove())
+        .call(ax => ax.selectAll('.tick line').attr('stroke', '#ccc'));
+
+      // Grid lines
+      g.selectAll('.grid-line')
+        .data(xScale.ticks(8))
+        .join('line')
+        .attr('class', 'grid-line')
+        .attr('x1', d => xScale(d)).attr('x2', d => xScale(d))
+        .attr('y1', 0).attr('y2', innerH)
+        .attr('stroke', '#e8e8e8')
+        .attr('stroke-dasharray', '3,3');
+
+      // Zero line
+      g.append('line')
+        .attr('class', 'zero-line')
+        .attr('x1', xScale(0)).attr('x2', xScale(0))
+        .attr('y1', 0).attr('y2', innerH);
+
+      // Bars
+      const bars = g.selectAll('.bar')
+        .data(filtered)
+        .join('rect')
+        .attr('class', 'bar')
+        .attr('x', d => val(d) >= 0 ? xScale(0) : xScale(val(d)))
+        .attr('y', d => yScale(d.code))
+        .attr('width', d => Math.max(Math.abs(xScale(val(d)) - xScale(0)), 1))
+        .attr('height', yScale.bandwidth())
+        .attr('fill', d => val(d) === 0 ? COLOR_ZERO : val(d) > 0 ? COLOR_POS : COLOR_NEG);
+
+      // Value labels
+      g.selectAll('.value-label')
+        .data(filtered)
+        .join('text')
+        .attr('class', 'value-label')
+        .attr('x', d => val(d) >= 0 ? xScale(val(d)) + 3 : xScale(val(d)) - 3)
+        .attr('y', d => yScale(d.code) + yScale.bandwidth() / 2 + 4)
+        .attr('text-anchor', d => val(d) >= 0 ? 'start' : 'end')
+        .text(d => fmt(val(d)));
+
+      // Y-axis labels
+      g.selectAll('.y-label')
+        .data(filtered)
+        .join('text')
+        .attr('class', 'y-label')
+        .attr('x', d => val(d) >= 0 ? xScale(0) - 6 : xScale(0) + 6)
+        .attr('y', d => yScale(d.code) + yScale.bandwidth() / 2 + 4)
+        .attr('text-anchor', d => val(d) >= 0 ? 'end' : 'start')
+        .attr('font-size', '11px')
+        .attr('fill', '#333')
+        .text(d => d.name_en);
+
+      bars
+        .on('mousemove', (event, d) => {
+          const v = val(d);
+          tooltip.style('display', 'block')
+            .html(`
+              <strong>${d.name_en}</strong><br>
+              ${cfg.tooltipLabel}: <strong style="color:${v > 0 ? COLOR_POS : COLOR_NEG}">${fmt(v)}</strong><br>
+              This week: ${fmtLBP(d.price_current)}<br>
+              Last week: ${fmtLBP(d.price_prev_week)}<br>
+              Last year: ${fmtLBP(d.price_mar2025)}
+
+            `)
+            .style('left', (event.clientX + 14) + 'px')
+            .style('top', (event.clientY - 10) + 'px');
+        })
+        .on('mouseleave', () => tooltip.style('display', 'none'));
+    }
+
+    function updateStats(filtered) {
+      const rising = filtered.filter(d => val(d) > 0);
+      const falling = filtered.filter(d => val(d) < 0);
+      const unchanged = filtered.filter(d => val(d) === 0);
+      const top = rising.length ? rising[0] : null;
+      const bot = falling.length ? falling[falling.length - 1] : null;
+
+      document.getElementById('stat-top-val').textContent = top ? fmt(val(top)) : '—';
+      document.getElementById('stat-top-val').style.color = top ? COLOR_POS : '#ccc';
+      document.getElementById('stat-top-name').textContent = top ? top.name_en : 'No increases';
+
+      document.getElementById('stat-bot-val').textContent = bot ? fmt(val(bot)) : '—';
+      document.getElementById('stat-bot-val').style.color = bot ? COLOR_NEG : '#ccc';
+      document.getElementById('stat-bot-name').textContent = bot ? bot.name_en : 'No decreases';
+
+      document.getElementById('stat-movement').textContent =
+        `${rising.length} ↑ · ${falling.length} ↓`;
+      document.getElementById('stat-movement-sub').textContent =
+        `of ${filtered.length} commodities`;
+
+      document.getElementById('stat-unchanged').textContent = unchanged.length;
+      document.getElementById('stat-unchanged-sub').textContent =
+        `of ${filtered.length} commodities (0% change)`;
+    }
+
+    function updateHeader() {
+      const cfg = METRIC_CONFIG[activeMetric];
+      document.getElementById('chart-title').textContent = cfg.title;
+      document.getElementById('chart-subtitle').textContent = cfg.subtitleFn(meta);
+    }
+
+    function redraw() {
+      updateHeader();
+      const filtered = getFilteredItems();
+      updateStats(filtered);
+      draw(card.clientWidth, filtered);
+    }
+
+    redraw();
+
+    new ResizeObserver(entries => {
+      draw(entries[0].contentRect.width, getFilteredItems());
+    }).observe(card);
+  });
+</script>
+</body>
+</html>
