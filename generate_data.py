@@ -1,10 +1,11 @@
 import json
 import re
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
 
-EXCEL_FILE = Path("data/weekly-basket-report-16-03-2026-EN.xlsx")
+EXCEL_FILE = Path("data/weekly-basket-report-23-03-2026-EN.xlsx")
 OUTPUT_FILE = Path("data/foodbasket.json")
 
 
@@ -14,6 +15,13 @@ def clean(val):
 
 def pct_change(a, b):
     return round((a - b) / b * 100, 2) if a and b else None
+
+
+def parse_report_date(path: Path) -> datetime:
+    m = re.search(r"(\d{2})-(\d{2})-(\d{4})", path.stem)
+    if not m:
+        raise ValueError(f"Cannot parse date from filename: {path.name}")
+    return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)))
 
 
 def main():
@@ -74,14 +82,17 @@ def main():
 
     items.sort(key=lambda x: (x["wow_pct"] is None, -(x["wow_pct"] or 0)))
 
+    report_date = parse_report_date(EXCEL_FILE)
+    prev_date = report_date - timedelta(weeks=1)
+
     output = {
         "meta": {
             "title": "Lebanon: Week-over-Week Price Change by Commodity",
             "subtitle": "Supermarkets",
-            "date_current": "16 Mar 2026",
-            "date_previous": "09 Mar 2026",
+            "date_current": report_date.strftime("%-d %b %Y"),
+            "date_previous": prev_date.strftime("%-d %b %Y"),
             "source": "Lebanon Ministry of Economy and Trade \u2013 Price Policy Technical Office",
-            "generated": "2026-03-25",
+            "generated": datetime.today().strftime("%Y-%m-%d"),
         },
         "items": items,
     }
