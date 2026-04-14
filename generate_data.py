@@ -105,20 +105,21 @@ def main():
     items.sort(key=lambda x: (x["wow_pct"] is None, -(x["wow_pct"] or 0)))
 
     # Build weekly basket totals for time series using pre-computed basket costs
-    # MEB total = all items (both "Food MEB" and "Food SMEB")
-    # SMEB total = only "Food SMEB" items
+    # meb: only "Food MEB" items; smeb: only "Food SMEB" items (non-overlapping)
     weekly_meb = {}
     weekly_smeb = {}
     for r in rows:
         date = r["Reporting_Month"]
         cost = float(r["ministry_smeb_price_lbp"])
-        weekly_meb[date] = weekly_meb.get(date, 0) + cost
-        if r["baskett"] == "Food SMEB":
+        if r["baskett"] == "Food MEB":
+            weekly_meb[date] = weekly_meb.get(date, 0) + cost
+        elif r["baskett"] == "Food SMEB":
             weekly_smeb[date] = weekly_smeb.get(date, 0) + cost
 
+    all_dates = sorted(set(weekly_meb) | set(weekly_smeb))
     timeseries = [
-        {"date": d, "meb": round(weekly_meb[d]), "smeb": round(weekly_smeb.get(d, 0))}
-        for d in sorted(weekly_meb)
+        {"date": d, "meb": round(weekly_meb.get(d, 0)), "smeb": round(weekly_smeb.get(d, 0))}
+        for d in all_dates
     ]
 
     output = {

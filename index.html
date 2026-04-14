@@ -320,9 +320,13 @@
   </div>
 
   <div id="controls">
-    <div class="filter-group">
+    <!-- <div class="filter-group">
       <div class="filter-label">Category</div>
       <div class="btn-row" id="cat-filters"></div>
+    </div> -->
+    <div class="filter-group">
+      <div class="filter-label">Food Basket</div>
+      <div class="btn-row" id="basket-filters"></div>
     </div>
     <div class="filter-group">
       <div class="filter-label">Percent Change</div>
@@ -406,12 +410,14 @@ fetch('data/foodbasket.json')
     let activeMetric = 'wow';
     const activeCategories = new Set(items.map(d => d.category_code));
     let activeDirection = 'all';
+    let activeBasket = 'all';
 
     function val(d) { return d[METRIC_CONFIG[activeMetric].field] || 0; }
 
     function getFilteredItems() {
       return sorted[activeMetric].filter(d => {
         if (!activeCategories.has(d.category_code)) return false;
+        if (activeBasket !== 'all' && d.basket !== activeBasket) return false;
         const v = val(d);
         if (activeDirection === 'positive' && !(v > 0)) return false;
         if (activeDirection === 'negative' && !(v < 0)) return false;
@@ -430,25 +436,45 @@ fetch('data/foodbasket.json')
       });
     });
 
-    // --- Category toggles ---
-    const categories = [...new Map(items.map(d => [d.category_code, d.category_en])).entries()]
-      .map(([code, en]) => ({ code, en }));
-    const catContainer = document.getElementById('cat-filters');
-    categories.forEach(cat => {
+    // --- Category toggles (commented out) ---
+    // const categories = [...new Map(items.map(d => [d.category_code, d.category_en])).entries()]
+    //   .map(([code, en]) => ({ code, en }));
+    // const catContainer = document.getElementById('cat-filters');
+    // categories.forEach(cat => {
+    //   const btn = document.createElement('button');
+    //   btn.className = 'btn active';
+    //   btn.textContent = cat.en;
+    //   btn.addEventListener('click', () => {
+    //     if (activeCategories.has(cat.code)) {
+    //       activeCategories.delete(cat.code);
+    //       btn.classList.remove('active');
+    //     } else {
+    //       activeCategories.add(cat.code);
+    //       btn.classList.add('active');
+    //     }
+    //     redraw();
+    //   });
+    //   catContainer.appendChild(btn);
+    // });
+
+    // --- Basket filter ---
+    const baskets = [
+      { key: 'all', label: 'All' },
+      { key: 'Food MEB', label: 'Minimum Expenditure Basket (MEB)' },
+      { key: 'Food SMEB', label: 'Survival Minimum Expenditure Basket (SMEB)' },
+    ];
+    const basketContainer = document.getElementById('basket-filters');
+    baskets.forEach(b => {
       const btn = document.createElement('button');
-      btn.className = 'btn active';
-      btn.textContent = cat.en;
+      btn.className = 'btn' + (b.key === 'all' ? ' active' : '');
+      btn.textContent = b.label;
       btn.addEventListener('click', () => {
-        if (activeCategories.has(cat.code)) {
-          activeCategories.delete(cat.code);
-          btn.classList.remove('active');
-        } else {
-          activeCategories.add(cat.code);
-          btn.classList.add('active');
-        }
+        activeBasket = b.key;
+        basketContainer.querySelectorAll('.btn').forEach(el => el.classList.remove('active'));
+        btn.classList.add('active');
         redraw();
       });
-      catContainer.appendChild(btn);
+      basketContainer.appendChild(btn);
     });
 
     // --- Direction filter ---
@@ -662,8 +688,8 @@ fetch('data/foodbasket.json')
         smeb: d.smeb,
       }));
 
-      const COLOR_MEB = '#5B8DB8';
-      const COLOR_SMEB = '#E07B39';
+      const COLOR_MEB = '#F2645A';
+      const COLOR_SMEB = '#1EBFB3';
       const TS_MARGIN = { top: 20, right: 70, bottom: 36, left: 70 };
 
       const tsSvg = d3.select('#timeseries-svg');
@@ -778,8 +804,8 @@ fetch('data/foodbasket.json')
         const legendG = tsSvg.append('g')
           .attr('transform', `translate(${TS_MARGIN.left},${svgH - 4})`);
 
-        [[COLOR_MEB, 'MEB'], [COLOR_SMEB, 'SMEB']].forEach(([color, label], i) => {
-          const lx = i * 80;
+        [[COLOR_MEB, 'Minimum Expenditure Basket (MEB)'], [COLOR_SMEB, 'Survival Minimum Expenditure Basket (SMEB)']].forEach(([color, label], i) => {
+          const lx = i * 260;
           legendG.append('line')
             .attr('x1', lx).attr('x2', lx + 20)
             .attr('y1', 0).attr('y2', 0)
