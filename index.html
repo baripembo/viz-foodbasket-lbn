@@ -228,14 +228,6 @@
 
     #save-btn:hover { border-color: #007CE0; color: #007CE0; }
 
-    #card-source {
-      padding: 8px 16px 12px;
-      font-size: 11px;
-      color: #888;
-      border-top: 1px solid #f0f0f0;
-      margin-top: 4px;
-    }
-
     #timeseries-card {
       background: #fff;
       border: 1px solid #e0e0e0;
@@ -250,6 +242,12 @@
       font-size: 16px;
       font-weight: 700;
       color: #1a1a1a;
+    }
+
+    #timeseries-source {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
       margin-bottom: 12px;
     }
 
@@ -283,11 +281,10 @@
 
 <header>
   <h1>Lebanon Food Basket Prices</h1>
-  <p class="subtitle">Source: Ministry of Economy and Trade - Technical Office for Price Policy &nbsp;&middot;&nbsp; Weekly, Dec 2018 - Mar 2026</p>
 </header>
 
 <main>
-  <p class="description">This chart shows week-over-week and year-over-year price changes for 25 food commodities in Lebanon's Ministry of Economy and Trade MEB/SMEB basket. Prices are normalised to LBP per kg or litre. Bars extending right indicate price increases and bars extending left indicate decreases. Use the category and percent change filters to explore specific food groups or price movements.</p>
+  <p class="description">This chart shows week-over-week and year-over-year price changes for 25 food commodities in Lebanon's Ministry of Economy and Trade Minimum Expenditure Basket (MEB) and Survival Minimum Expenditure Basket (SMEB). Prices are normalised to LBP per kg or litre. Bars extending right indicate price increases and bars extending left indicate decreases. Use the category and percent change filters to explore specific food groups or price movements.</p>
   <div id="metric-toggle" style="margin-bottom:16px;">
     <div class="filter-label" style="margin-bottom:6px;">View</div>
     <div class="btn-row">
@@ -344,10 +341,10 @@
     </div>
     <svg id="chart"></svg>
     <div id="no-results">No commodities match the current filters.</div>
-    <div id="card-source"><span id="source-note"></span></div>
   </div>
   <div id="timeseries-card">
     <div id="timeseries-title">Weekly basket total cost (LBP)</div>
+    <div id="timeseries-source"></div>
     <svg id="timeseries-svg"></svg>
   </div>
 </main>
@@ -363,16 +360,17 @@ const COLOR_POS = '#F2645A';
 const COLOR_NEG = '#1EBFB3';
 const COLOR_ZERO = '#ccc';
 
+const SOURCE_URL = 'https://www.economy.gov.lb/en/services/center-for-pricing-policies/mini---basket-weekly-';
 const METRIC_CONFIG = {
   wow: {
     title: 'Lebanon: Week-over-Week Price Change by Commodity',
-    subtitleFn: m => `${m.subtitle} (${m.date_previous} – ${m.date_current})`,
+    subtitleFn: m => `<a href="${SOURCE_URL}" target="_blank" rel="noopener" style="color:#007CE0;">Lebanon Ministry of Economy and Trade</a> (${m.date_previous} – ${m.date_current})`,
     field: 'wow_pct',
     tooltipLabel: 'Week-over-week change',
   },
   yoy: {
     title: 'Lebanon: Year-over-Year Price Change by Commodity',
-    subtitleFn: m => `${m.subtitle} (${m.date_yoy} – ${m.date_current})`,
+    subtitleFn: m => `<a href="${SOURCE_URL}" target="_blank" rel="noopener" style="color:#007CE0;">Lebanon Ministry of Economy and Trade</a> (${m.date_yoy} – ${m.date_current})`,
     field: 'yoy_pct',
     tooltipLabel: 'YoY change',
   },
@@ -398,7 +396,6 @@ fetch('data/foodbasket.json')
   .then(data => {
     const { meta, items } = data;
 
-    document.getElementById('source-note').innerHTML = `Source: <a href="https://www.economy.gov.lb/en/services/center-for-pricing-policies/mini---basket-weekly-" target="_blank" rel="noopener" style="color:#007CE0;">${meta.source}</a>. Data as of ${meta.date_current}.`;
 
     // Pre-sort items for each metric
     const sorted = {
@@ -640,7 +637,7 @@ fetch('data/foodbasket.json')
     function updateHeader() {
       const cfg = METRIC_CONFIG[activeMetric];
       document.getElementById('card-title').textContent = cfg.title;
-      document.getElementById('card-subtitle').textContent = cfg.subtitleFn(meta);
+      document.getElementById('card-subtitle').innerHTML = cfg.subtitleFn(meta);
     }
 
     function redraw() {
@@ -687,6 +684,12 @@ fetch('data/foodbasket.json')
         meb: d.meb,
         smeb: d.smeb,
       }));
+
+      const tsDateFmt = d3.timeFormat('%-d %b %Y');
+      const tsFirst = tsDateFmt(tsData[0].date);
+      const tsLast = tsDateFmt(tsData[tsData.length - 1].date);
+      document.getElementById('timeseries-source').innerHTML =
+        `<a href="${SOURCE_URL}" target="_blank" rel="noopener" style="color:#007CE0;">Lebanon Ministry of Economy and Trade</a> (${tsFirst} – ${tsLast})`;
 
       const COLOR_MEB = '#F2645A';
       const COLOR_SMEB = '#1EBFB3';
