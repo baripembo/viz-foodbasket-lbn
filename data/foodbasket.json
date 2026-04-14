@@ -1,732 +1,1979 @@
 {
   "meta": {
-    "title": "Lebanon: Week-over-Week Price Change by Commodity",
-    "subtitle": "Supermarkets",
-    "date_current": "23 Mar 2026",
-    "date_previous": "16 Mar 2026",
+    "subtitle": "Ministry of Economy MEB/SMEB basket",
+    "date_current": "30 Mar 2026",
+    "date_previous": "23 Mar 2026",
+    "date_yoy": "2 Apr 2025",
     "source": "Lebanon Ministry of Economy and Trade – Price Policy Technical Office",
-    "generated": "2026-03-27"
+    "generated": "2026-04-13"
   },
   "items": [
     {
-      "code": "V 4",
-      "name_en": "Cabbage",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 63109.77777777778,
-      "price_prev_week": 49998.66666666666,
-      "price_mar2025": 42132.7,
-      "wow_pct": 26.22,
-      "yoy_pct": 49.79,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Fr 5",
-      "name_en": "Lemon",
+      "code": "Banana",
+      "name_en": "Banana",
       "category_code": "Fr",
       "category_en": "Fruits",
-      "price_current": 163887.5555555556,
-      "price_prev_week": 144443.1111111111,
-      "price_mar2025": 60875.86111111111,
-      "wow_pct": 13.46,
-      "yoy_pct": 169.22,
+      "basket": "Food MEB",
+      "smeb_item": "Bananas",
+      "price_current": 96517.1428571429,
+      "price_prev_week": 80668.9285714286,
+      "price_yoy": 84811.875,
+      "wow_pct": 19.65,
+      "yoy_pct": 13.8,
       "unit": "1 kg"
     },
     {
-      "code": "V 14",
-      "name_en": "Red Onion",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 118332.0,
-      "price_prev_week": 104332.0,
-      "price_mar2025": 68444.3,
-      "wow_pct": 13.42,
-      "yoy_pct": 72.89,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 3",
-      "name_en": "Eggplant",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 229443.1111111111,
-      "price_prev_week": 202776.4444444444,
-      "price_mar2025": 148561.9,
-      "wow_pct": 13.15,
-      "yoy_pct": 54.44,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 12",
-      "name_en": "Lettuce",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 164443.1111111111,
-      "price_prev_week": 148887.5555555556,
-      "price_mar2025": 96916.05,
-      "wow_pct": 10.45,
-      "yoy_pct": 69.68,
-      "unit": "1 piece"
-    },
-    {
-      "code": "G 1",
-      "name_en": "Red Lentils",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 152041.5,
-      "price_prev_week": 143161.2,
-      "price_mar2025": 153676.0416666667,
-      "wow_pct": 6.2,
-      "yoy_pct": -1.06,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "Misc 1",
-      "name_en": "Salt",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 74322.85714285714,
-      "price_prev_week": 70414.5,
-      "price_mar2025": 70474.28571428571,
-      "wow_pct": 5.55,
-      "yoy_pct": 5.46,
-      "unit": "700g can"
-    },
-    {
-      "code": "V 15",
-      "name_en": "Dried Garlic",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 130700.0,
-      "price_prev_week": 124700.0,
-      "price_mar2025": 116514.65,
-      "wow_pct": 4.81,
-      "yoy_pct": 12.17,
-      "unit": "300g bag"
-    },
-    {
-      "code": "G 2",
-      "name_en": "White Navy Beans",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 197639.0,
-      "price_prev_week": 188594.25,
-      "price_mar2025": 222971.0416666667,
-      "wow_pct": 4.8,
-      "yoy_pct": -11.36,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "M 5",
-      "name_en": "Chicken Thighs (with skin)",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 309465.0,
-      "price_prev_week": 296010.0,
-      "price_mar2025": 288161.25,
-      "wow_pct": 4.55,
-      "yoy_pct": 7.39,
-      "unit": "1 kg"
-    },
-    {
-      "code": "G 5",
-      "name_en": "White Rice",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 111527.0,
-      "price_prev_week": 108408.8571428571,
-      "price_mar2025": 105001.3125,
-      "wow_pct": 2.88,
-      "yoy_pct": 6.21,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "G 6",
-      "name_en": "Flour",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 156302.25,
-      "price_prev_week": 152041.5,
-      "price_mar2025": 166877.4375,
-      "wow_pct": 2.8,
-      "yoy_pct": -6.34,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "Misc 3",
-      "name_en": "Tomato Paste",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 54973.28571428572,
-      "price_prev_week": 53563.71428571428,
-      "price_mar2025": 57023.57142857143,
-      "wow_pct": 2.63,
-      "yoy_pct": -3.6,
-      "unit": "70g small"
-    },
-    {
-      "code": "O 3",
-      "name_en": "Sunflower Oil",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 886620.4285714285,
-      "price_prev_week": 864259.5,
-      "price_mar2025": 833760.2222222222,
-      "wow_pct": 2.59,
-      "yoy_pct": 6.34,
-      "unit": "3.5 L gallon"
-    },
-    {
-      "code": "G 4",
-      "name_en": "Chickpeas",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 178951.5,
-      "price_prev_week": 174915.0,
-      "price_mar2025": 155391.175,
-      "wow_pct": 2.31,
-      "yoy_pct": 15.16,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "M 1",
-      "name_en": "Fresh Local Lamb",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 2181205.0,
-      "price_prev_week": 2135607.5,
-      "price_mar2025": 1811176.575,
-      "wow_pct": 2.14,
-      "yoy_pct": 20.43,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Fr 4",
-      "name_en": "Navel Orange",
-      "category_code": "Fr",
-      "category_en": "Fruits",
-      "price_current": 172141.4285714286,
-      "price_prev_week": 168570.0,
-      "price_mar2025": 109249.15,
-      "wow_pct": 2.12,
-      "yoy_pct": 57.57,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 11",
-      "name_en": "Coriander",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 54998.66666666666,
-      "price_prev_week": 53887.55555555555,
-      "price_mar2025": 42046.52222222222,
-      "wow_pct": 2.06,
-      "yoy_pct": 30.8,
-      "unit": "1 bunch"
-    },
-    {
-      "code": "O 5",
-      "name_en": "Tahini",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 312540.4285714286,
-      "price_prev_week": 306645.8571428572,
-      "price_mar2025": 298652.65625,
-      "wow_pct": 1.92,
-      "yoy_pct": 4.65,
-      "unit": "454g jar"
-    },
-    {
-      "code": "D 4",
-      "name_en": "Kashkaval Cow Cheese",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 1501706.142857143,
-      "price_prev_week": 1481972.142857143,
-      "price_mar2025": 1341398.09375,
-      "wow_pct": 1.33,
-      "yoy_pct": 11.95,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "V 13",
-      "name_en": "Radish",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 54998.66666666666,
-      "price_prev_week": 54443.11111111111,
-      "price_mar2025": 48435.41111111111,
-      "wow_pct": 1.02,
-      "yoy_pct": 13.55,
-      "unit": "1 bunch"
-    },
-    {
-      "code": "V 9",
-      "name_en": "Mint",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 56109.77777777778,
-      "price_prev_week": 55554.22222222222,
-      "price_mar2025": 47554.85555555555,
-      "wow_pct": 1.0,
-      "yoy_pct": 17.99,
-      "unit": "1 bunch"
-    },
-    {
-      "code": "M 6",
-      "name_en": "Boneless Chicken Breast",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 926601.0,
-      "price_prev_week": 917631.0,
-      "price_mar2025": 1003834.4,
-      "wow_pct": 0.98,
-      "yoy_pct": -7.69,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 10",
-      "name_en": "Purslane",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 64443.11111111111,
-      "price_prev_week": 63887.55555555555,
-      "price_mar2025": 53692.33888888889,
-      "wow_pct": 0.87,
-      "yoy_pct": 20.02,
-      "unit": "1 bunch"
-    },
-    {
-      "code": "G 8",
-      "name_en": "Almonds",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 280561.6666666667,
-      "price_prev_week": 278568.3333333333,
-      "price_mar2025": 218573.9285714286,
-      "wow_pct": 0.72,
-      "yoy_pct": 28.36,
-      "unit": "200g (okia)"
-    },
-    {
-      "code": "D 5",
-      "name_en": "Cheese Slices",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 167514.75,
-      "price_prev_week": 166393.5,
-      "price_mar2025": 164207.0625,
-      "wow_pct": 0.67,
-      "yoy_pct": 2.01,
-      "unit": "160g slices"
-    },
-    {
-      "code": "O 2",
-      "name_en": "Olive Oil",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 3497552.5,
-      "price_prev_week": 3481257.0,
-      "price_mar2025": 3100635.25,
-      "wow_pct": 0.47,
-      "yoy_pct": 12.8,
-      "unit": "3.6 L gallon"
-    },
-    {
-      "code": "C 2",
-      "name_en": "Tuna",
-      "category_code": "C",
-      "category_en": "Canned Goods",
-      "price_current": 212230.2,
-      "price_prev_week": 211542.5,
-      "price_mar2025": 205525.4285714286,
-      "wow_pct": 0.33,
-      "yoy_pct": 3.26,
-      "unit": "200g can"
-    },
-    {
-      "code": "V 16",
-      "name_en": "Potatoes",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 82499.75,
-      "price_prev_week": 82499.75,
-      "price_mar2025": 67354.01388888889,
-      "wow_pct": 0.0,
-      "yoy_pct": 22.49,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Fr 3",
-      "name_en": "Local Banana",
-      "category_code": "Fr",
-      "category_en": "Fruits",
-      "price_current": 85712.85714285714,
-      "price_prev_week": 85712.85714285714,
-      "price_mar2025": 83426.425,
-      "wow_pct": 0.0,
-      "yoy_pct": 2.74,
-      "unit": "1 kg"
-    },
-    {
-      "code": "D 1",
-      "name_en": "Eggs",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 433507.2857142857,
-      "price_prev_week": 433507.2857142857,
-      "price_mar2025": 334440.7291666667,
-      "wow_pct": 0.0,
-      "yoy_pct": 29.62,
-      "unit": "30 pcs"
-    },
-    {
-      "code": "D 3",
-      "name_en": "Akkawi White Cheese",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 1124709.857142857,
-      "price_prev_week": 1124709.857142857,
-      "price_mar2025": 996615.0,
-      "wow_pct": 0.0,
-      "yoy_pct": 12.85,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "D 6",
-      "name_en": "Powdered Milk",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 1714615.5,
-      "price_prev_week": 1714615.5,
-      "price_mar2025": 1693433.625,
-      "wow_pct": 0.0,
-      "yoy_pct": 1.25,
-      "unit": "2.5 kg tin"
-    },
-    {
-      "code": "G 7",
-      "name_en": "Walnuts",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 269817.6,
-      "price_prev_week": 269817.6,
-      "price_mar2025": 185749.7,
-      "wow_pct": 0.0,
-      "yoy_pct": 45.26,
-      "unit": "200g (okia)"
-    },
-    {
-      "code": "G 9",
-      "name_en": "Pine Nuts",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 1853202.0,
-      "price_prev_week": 1853202.0,
-      "price_mar2025": 1266491.833333333,
-      "wow_pct": 0.0,
-      "yoy_pct": 46.33,
-      "unit": "200g (okia)"
-    },
-    {
-      "code": "O 1",
-      "name_en": "Butter",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 495592.5,
-      "price_prev_week": 495592.5,
-      "price_mar2025": 494335.9583333334,
-      "wow_pct": 0.0,
-      "yoy_pct": 0.25,
-      "unit": "400g large"
-    },
-    {
-      "code": "O 4",
-      "name_en": "Corn Oil",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 587893.8,
-      "price_prev_week": 587893.8,
-      "price_mar2025": 601229.8333333334,
-      "wow_pct": 0.0,
-      "yoy_pct": -2.22,
-      "unit": "1.8 L bottle"
-    },
-    {
-      "code": "O 6",
-      "name_en": "Plain Halva",
-      "category_code": "O",
-      "category_en": "Fats and Oils",
-      "price_current": 229888.2857142857,
-      "price_prev_week": 229888.2857142857,
-      "price_mar2025": 219632.5,
-      "wow_pct": 0.0,
-      "yoy_pct": 4.67,
-      "unit": "454g can"
-    },
-    {
-      "code": "C 3",
-      "name_en": "Sardines",
-      "category_code": "C",
-      "category_en": "Canned Goods",
-      "price_current": 117656.5,
-      "price_prev_week": 117656.5,
-      "price_mar2025": 98061.47321428571,
-      "wow_pct": 0.0,
-      "yoy_pct": 19.98,
-      "unit": "125g can"
-    },
-    {
-      "code": "C 4",
-      "name_en": "Whole Button Mushrooms",
-      "category_code": "C",
-      "category_en": "Canned Goods",
-      "price_current": 149350.5,
-      "price_prev_week": 149350.5,
-      "price_mar2025": 151858.8333333333,
-      "wow_pct": 0.0,
-      "yoy_pct": -1.65,
-      "unit": "400g can"
-    },
-    {
-      "code": "C 5",
-      "name_en": "Corn",
-      "category_code": "C",
-      "category_en": "Canned Goods",
-      "price_current": 134849.0,
-      "price_prev_week": 134849.0,
-      "price_mar2025": 134293.025,
-      "wow_pct": 0.0,
-      "yoy_pct": 0.41,
-      "unit": "340g can"
-    },
-    {
-      "code": "Misc 6",
-      "name_en": "Tea (unflavored)",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 520035.75,
-      "price_prev_week": 520035.75,
-      "price_mar2025": 577967.0,
-      "wow_pct": 0.0,
-      "yoy_pct": -10.02,
-      "unit": "454g pack"
-    },
-    {
-      "code": "Misc 7",
-      "name_en": "Ground Coffee",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 301055.625,
-      "price_prev_week": 301055.625,
-      "price_mar2025": 300252.4166666667,
-      "wow_pct": 0.0,
-      "yoy_pct": 0.27,
-      "unit": "200g pack"
-    },
-    {
-      "code": "Misc 5",
-      "name_en": "Pasta",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 146310.6666666667,
-      "price_prev_week": 146659.5,
-      "price_mar2025": 144879.575,
-      "wow_pct": -0.24,
-      "yoy_pct": 0.99,
-      "unit": "500g packet"
-    },
-    {
-      "code": "M 3",
-      "name_en": "Imported Chilled Beef",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 1042185.857142857,
-      "price_prev_week": 1044748.714285714,
-      "price_mar2025": 760555.0875,
-      "wow_pct": -0.25,
-      "yoy_pct": 37.03,
-      "unit": "1 kg"
-    },
-    {
-      "code": "C 1",
-      "name_en": "Beef Mortadella",
-      "category_code": "C",
-      "category_en": "Canned Goods",
-      "price_current": 325312.0,
-      "price_prev_week": 326171.625,
-      "price_mar2025": 313035.0,
-      "wow_pct": -0.26,
-      "yoy_pct": 3.92,
-      "unit": "340g can"
-    },
-    {
-      "code": "M 4",
-      "name_en": "Whole Chicken",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 355212.0,
-      "price_prev_week": 357454.5,
-      "price_mar2025": 364630.5,
-      "wow_pct": -0.63,
-      "yoy_pct": -2.58,
-      "unit": "1 kg"
-    },
-    {
-      "code": "G 3",
-      "name_en": "Fava Beans",
-      "category_code": "G",
-      "category_en": "Grains, Seeds and Nuts",
-      "price_current": 148005.0,
-      "price_prev_week": 151054.8,
-      "price_mar2025": 139017.7,
-      "wow_pct": -2.02,
-      "yoy_pct": 6.46,
-      "unit": "1 kg pack"
-    },
-    {
-      "code": "V 8",
-      "name_en": "Parsley",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 44998.66666666666,
-      "price_prev_week": 45998.66666666666,
-      "price_mar2025": 30986.85,
-      "wow_pct": -2.17,
-      "yoy_pct": 45.22,
-      "unit": "1 bunch"
-    },
-    {
-      "code": "V 7",
-      "name_en": "Carrots",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 143749.75,
-      "price_prev_week": 147220.8888888889,
-      "price_mar2025": 83978.55,
-      "wow_pct": -2.36,
-      "yoy_pct": 71.17,
-      "unit": "1 kg"
-    },
-    {
-      "code": "D 2",
-      "name_en": "Labneh",
-      "category_code": "D",
-      "category_en": "Eggs and Dairy Products",
-      "price_current": 332002.125,
-      "price_prev_week": 341458.0,
-      "price_mar2025": 316942.5916666667,
-      "wow_pct": -2.77,
-      "yoy_pct": 4.75,
-      "unit": "500g container"
-    },
-    {
-      "code": "Misc 4",
-      "name_en": "Ketchup",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 97388.57142857143,
-      "price_prev_week": 101361.0,
-      "price_mar2025": 91376.875,
-      "wow_pct": -3.92,
-      "yoy_pct": 6.58,
-      "unit": "340g bottle"
-    },
-    {
-      "code": "V 1",
-      "name_en": "Tomatoes",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 232220.8888888889,
-      "price_prev_week": 242776.4444444444,
-      "price_mar2025": 98291.1375,
-      "wow_pct": -4.35,
-      "yoy_pct": 136.26,
-      "unit": "1 kg"
-    },
-    {
-      "code": "M 2",
-      "name_en": "Fresh Local Beef",
-      "category_code": "M",
-      "category_en": "Meat and Derivatives",
-      "price_current": 1246531.0,
-      "price_prev_week": 1316297.666666667,
-      "price_mar2025": 1105097.872222222,
-      "wow_pct": -5.3,
-      "yoy_pct": 12.8,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Fr 1",
-      "name_en": "Local Red Apple",
-      "category_code": "Fr",
-      "category_en": "Fruits",
-      "price_current": 236109.7777777778,
-      "price_prev_week": 249443.1111111111,
-      "price_mar2025": 172117.3805555556,
-      "wow_pct": -5.35,
-      "yoy_pct": 37.18,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Fr 2",
-      "name_en": "Local Yellow Apple",
-      "category_code": "Fr",
-      "category_en": "Fruits",
-      "price_current": 234443.1111111111,
-      "price_prev_week": 248332.0,
-      "price_mar2025": 169284.0472222222,
-      "wow_pct": -5.59,
-      "yoy_pct": 38.49,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 5",
-      "name_en": "Green Beans",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 556249.75,
-      "price_prev_week": 606428.2857142857,
-      "price_mar2025": 361843.0,
-      "wow_pct": -8.27,
-      "yoy_pct": 53.73,
-      "unit": "1 kg"
-    },
-    {
-      "code": "Misc 2",
-      "name_en": "Sugar",
-      "category_code": "Misc",
-      "category_en": "Miscellaneous Food Items",
-      "price_current": 86672.625,
-      "price_prev_week": 94801.6875,
-      "price_mar2025": 91233.15625,
-      "wow_pct": -8.57,
-      "yoy_pct": -5.0,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 2",
-      "name_en": "Zucchini",
-      "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 172776.4444444444,
-      "price_prev_week": 196109.7777777778,
-      "price_mar2025": 137096.5013888889,
-      "wow_pct": -11.9,
-      "yoy_pct": 26.03,
-      "unit": "1 kg"
-    },
-    {
-      "code": "V 6",
+      "code": "Cucumber",
       "name_en": "Cucumber",
       "category_code": "V",
-      "category_en": "Fresh Vegetables",
-      "price_current": 126749.75,
-      "price_prev_week": 159443.1111111111,
-      "price_mar2025": 147895.2,
-      "wow_pct": -20.5,
-      "yoy_pct": -14.3,
+      "category_en": "Vegetables",
+      "basket": "Food MEB",
+      "smeb_item": "Cucumber",
+      "price_current": 130068.777777778,
+      "price_prev_week": 120874.875,
+      "price_yoy": 136499.4,
+      "wow_pct": 7.61,
+      "yoy_pct": -4.71,
       "unit": "1 kg"
+    },
+    {
+      "code": "Eggs",
+      "name_en": "Eggs",
+      "category_code": "D",
+      "category_en": "Eggs & Dairy",
+      "basket": "Food SMEB",
+      "smeb_item": "Eggs",
+      "price_current": 254759.96,
+      "price_prev_week": 242764.08,
+      "price_yoy": 190092.24,
+      "wow_pct": 4.94,
+      "yoy_pct": 34.02,
+      "unit": "30 pieces"
+    },
+    {
+      "code": "Sunflower Oil",
+      "name_en": "Sunflower Oil",
+      "category_code": "O",
+      "category_en": "Fats & Oils",
+      "basket": "Food SMEB",
+      "smeb_item": "Sunflower Oil",
+      "price_current": 256028.916,
+      "price_prev_week": 253573.442571429,
+      "price_yoy": 239068.639333333,
+      "wow_pct": 0.97,
+      "yoy_pct": 7.09,
+      "unit": "3.5 L"
+    },
+    {
+      "code": "Apples",
+      "name_en": "Apples",
+      "category_code": "Fr",
+      "category_en": "Fruits",
+      "basket": "Food SMEB",
+      "smeb_item": "Red apples",
+      "price_current": 235902.111111111,
+      "price_prev_week": 234929.888888889,
+      "price_yoy": 173054.888222222,
+      "wow_pct": 0.41,
+      "yoy_pct": 36.32,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Salt",
+      "name_en": "Salt",
+      "category_code": "Misc",
+      "category_en": "Miscellaneous",
+      "basket": "Food SMEB",
+      "smeb_item": "Salt",
+      "price_current": 106648.174285714,
+      "price_prev_week": 106281.685714286,
+      "price_yoy": 100967.601428571,
+      "wow_pct": 0.34,
+      "yoy_pct": 5.63,
+      "unit": "700 g"
+    },
+    {
+      "code": "Tea",
+      "name_en": "Tea",
+      "category_code": "Misc",
+      "category_en": "Miscellaneous",
+      "basket": "Food SMEB",
+      "smeb_item": "Tea (unflavored) packed",
+      "price_current": 1149590.93925,
+      "price_prev_week": 1145638.75725,
+      "price_yoy": 1273261.301,
+      "wow_pct": 0.34,
+      "yoy_pct": -9.71,
+      "unit": "454 g"
+    },
+    {
+      "code": "Oranges",
+      "name_en": "Oranges",
+      "category_code": "Fr",
+      "category_en": "Fruits",
+      "basket": "Food MEB",
+      "smeb_item": "Naval oranges",
+      "price_current": 150833.333333333,
+      "price_prev_week": 150445.714285714,
+      "price_yoy": 113749.166333333,
+      "wow_pct": 0.26,
+      "yoy_pct": 32.6,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Powdered Milk",
+      "name_en": "Powdered Milk",
+      "category_code": "D",
+      "category_en": "Eggs & Dairy",
+      "basket": "Food SMEB",
+      "smeb_item": "Milk powder can",
+      "price_current": 685846.2,
+      "price_prev_week": 685846.2,
+      "price_yoy": 668803.2,
+      "wow_pct": 0.0,
+      "yoy_pct": 2.55,
+      "unit": "2.5 kg"
+    },
+    {
+      "code": "Tahini",
+      "name_en": "Tahini",
+      "category_code": "O",
+      "category_en": "Fats & Oils",
+      "basket": "Food MEB",
+      "smeb_item": "Tahina container",
+      "price_current": 688526.564142858,
+      "price_prev_week": 688526.564142858,
+      "price_yoy": 639759.46125,
+      "wow_pct": 0.0,
+      "yoy_pct": 7.62,
+      "unit": "454 g"
+    },
+    {
+      "code": "Sugar",
+      "name_en": "Sugar",
+      "category_code": "Misc",
+      "category_en": "Miscellaneous",
+      "basket": "Food SMEB",
+      "smeb_item": "Sugar",
+      "price_current": 86672.625,
+      "price_prev_week": 86672.625,
+      "price_yoy": 92166.75,
+      "wow_pct": 0.0,
+      "yoy_pct": -5.96,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Tomato Paste",
+      "name_en": "Tomato Paste",
+      "category_code": "Misc",
+      "category_en": "Miscellaneous",
+      "basket": "Food SMEB",
+      "smeb_item": "Small tomato paste",
+      "price_current": 785568.252857143,
+      "price_prev_week": 785568.252857143,
+      "price_yoy": 814866.835714285,
+      "wow_pct": 0.0,
+      "yoy_pct": -3.6,
+      "unit": "70 g"
+    },
+    {
+      "code": "Sardine",
+      "name_en": "Sardine",
+      "category_code": "C",
+      "category_en": "Canned Goods",
+      "basket": "Food SMEB",
+      "smeb_item": "Sardines can",
+      "price_current": 941252.0,
+      "price_prev_week": 941252.0,
+      "price_yoy": 784875.0,
+      "wow_pct": 0.0,
+      "yoy_pct": 19.92,
+      "unit": "125 g"
+    },
+    {
+      "code": "Chickpeas",
+      "name_en": "Chickpeas",
+      "category_code": "G",
+      "category_en": "Grains & Pulses",
+      "basket": "Food SMEB",
+      "smeb_item": "Chickpeas packed",
+      "price_current": 177606.0,
+      "price_prev_week": 178951.5,
+      "price_yoy": 158769.0,
+      "wow_pct": -0.75,
+      "yoy_pct": 11.86,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Carrots",
+      "name_en": "Carrots",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food SMEB",
+      "smeb_item": "Carrots",
+      "price_current": 127187.375,
+      "price_prev_week": 128749.875,
+      "price_yoy": 90916.066,
+      "wow_pct": -1.21,
+      "yoy_pct": 39.9,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Rice",
+      "name_en": "Rice",
+      "category_code": "G",
+      "category_en": "Grains & Pulses",
+      "basket": "Food SMEB",
+      "smeb_item": "Plain rice",
+      "price_current": 109690.285714286,
+      "price_prev_week": 111527.0,
+      "price_yoy": 105285.375,
+      "wow_pct": -1.65,
+      "yoy_pct": 4.18,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Potatoes",
+      "name_en": "Potatoes",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food SMEB",
+      "smeb_item": "Potato",
+      "price_current": 75562.375,
+      "price_prev_week": 76874.875,
+      "price_yoy": 69333.2215555556,
+      "wow_pct": -1.71,
+      "yoy_pct": 8.98,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Onion",
+      "name_en": "Onion",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food MEB",
+      "smeb_item": "Red onion",
+      "price_current": 96527.1111111111,
+      "price_prev_week": 99478.5,
+      "price_yoy": 69972.1111111111,
+      "wow_pct": -2.97,
+      "yoy_pct": 37.95,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Cabbage",
+      "name_en": "Cabbage",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food SMEB",
+      "smeb_item": "Cabbage",
+      "price_current": 52291.0,
+      "price_prev_week": 54367.3888888889,
+      "price_yoy": 44199.4,
+      "wow_pct": -3.82,
+      "yoy_pct": 18.31,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Parsley",
+      "name_en": "Parsley",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food MEB",
+      "smeb_item": "Parsley",
+      "price_current": 765495.922222222,
+      "price_prev_week": 799986.666666666,
+      "price_yoy": 653988.0,
+      "wow_pct": -4.31,
+      "yoy_pct": 17.05,
+      "unit": "1 bundle"
+    },
+    {
+      "code": "Fresh Chicken",
+      "name_en": "Fresh Chicken",
+      "category_code": "M",
+      "category_en": "Meat",
+      "basket": "Food MEB",
+      "smeb_item": "Whole chicken",
+      "price_current": 339514.5,
+      "price_prev_week": 355212.0,
+      "price_yoy": 367770.0,
+      "wow_pct": -4.42,
+      "yoy_pct": -7.68,
+      "unit": "1 kg"
+    },
+    {
+      "code": "White Beans",
+      "name_en": "White Beans",
+      "category_code": "G",
+      "category_en": "Grains & Pulses",
+      "basket": "Food SMEB",
+      "smeb_item": "White beans",
+      "price_current": 188594.25,
+      "price_prev_week": 197639.0,
+      "price_yoy": 212131.5,
+      "wow_pct": -4.58,
+      "yoy_pct": -11.1,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Zucchini",
+      "name_en": "Zucchini",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food MEB",
+      "smeb_item": "Zucchini",
+      "price_current": 145242.388888889,
+      "price_prev_week": 152950.722222222,
+      "price_yoy": 135381.555555556,
+      "wow_pct": -5.04,
+      "yoy_pct": 7.28,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Lentils",
+      "name_en": "Lentils",
+      "category_code": "G",
+      "category_en": "Grains & Pulses",
+      "basket": "Food SMEB",
+      "smeb_item": "Red lentils",
+      "price_current": 143161.2,
+      "price_prev_week": 152041.5,
+      "price_yoy": 155852.5,
+      "wow_pct": -5.84,
+      "yoy_pct": -8.14,
+      "unit": "1 kg"
+    },
+    {
+      "code": "Tomato",
+      "name_en": "Tomato",
+      "category_code": "V",
+      "category_en": "Vegetables",
+      "basket": "Food MEB",
+      "smeb_item": "Tomato",
+      "price_current": 158749.875,
+      "price_prev_week": 207360.444444444,
+      "price_yoy": 92999.4,
+      "wow_pct": -23.44,
+      "yoy_pct": 70.7,
+      "unit": "1 kg"
+    }
+  ],
+  "timeseries": [
+    {
+      "date": "2018-12-03",
+      "meb": 356554,
+      "smeb": 233800
+    },
+    {
+      "date": "2018-12-10",
+      "meb": 366671,
+      "smeb": 238207
+    },
+    {
+      "date": "2018-12-17",
+      "meb": 362927,
+      "smeb": 235142
+    },
+    {
+      "date": "2018-12-31",
+      "meb": 366131,
+      "smeb": 234342
+    },
+    {
+      "date": "2019-01-08",
+      "meb": 366216,
+      "smeb": 232557
+    },
+    {
+      "date": "2019-01-21",
+      "meb": 382837,
+      "smeb": 233987
+    },
+    {
+      "date": "2019-01-28",
+      "meb": 377189,
+      "smeb": 239380
+    },
+    {
+      "date": "2019-02-04",
+      "meb": 386342,
+      "smeb": 235982
+    },
+    {
+      "date": "2019-02-11",
+      "meb": 383420,
+      "smeb": 235847
+    },
+    {
+      "date": "2019-02-18",
+      "meb": 374805,
+      "smeb": 235805
+    },
+    {
+      "date": "2019-02-25",
+      "meb": 367284,
+      "smeb": 235288
+    },
+    {
+      "date": "2019-03-04",
+      "meb": 377852,
+      "smeb": 240159
+    },
+    {
+      "date": "2019-03-11",
+      "meb": 377997,
+      "smeb": 241197
+    },
+    {
+      "date": "2019-03-18",
+      "meb": 366088,
+      "smeb": 238886
+    },
+    {
+      "date": "2019-03-26",
+      "meb": 369068,
+      "smeb": 240028
+    },
+    {
+      "date": "2019-04-01",
+      "meb": 365495,
+      "smeb": 239111
+    },
+    {
+      "date": "2019-04-08",
+      "meb": 369037,
+      "smeb": 239192
+    },
+    {
+      "date": "2019-04-15",
+      "meb": 366293,
+      "smeb": 238444
+    },
+    {
+      "date": "2019-04-23",
+      "meb": 373528,
+      "smeb": 240643
+    },
+    {
+      "date": "2019-04-30",
+      "meb": 378734,
+      "smeb": 243843
+    },
+    {
+      "date": "2019-05-06",
+      "meb": 382534,
+      "smeb": 240554
+    },
+    {
+      "date": "2019-05-13",
+      "meb": 368944,
+      "smeb": 237926
+    },
+    {
+      "date": "2019-05-20",
+      "meb": 366458,
+      "smeb": 237501
+    },
+    {
+      "date": "2019-05-27",
+      "meb": 352160,
+      "smeb": 233373
+    },
+    {
+      "date": "2019-06-10",
+      "meb": 358491,
+      "smeb": 237360
+    },
+    {
+      "date": "2019-06-17",
+      "meb": 350115,
+      "smeb": 235693
+    },
+    {
+      "date": "2019-06-24",
+      "meb": 359702,
+      "smeb": 235471
+    },
+    {
+      "date": "2019-07-01",
+      "meb": 352159,
+      "smeb": 235618
+    },
+    {
+      "date": "2019-07-08",
+      "meb": 345543,
+      "smeb": 233293
+    },
+    {
+      "date": "2019-07-15",
+      "meb": 347050,
+      "smeb": 234474
+    },
+    {
+      "date": "2019-07-22",
+      "meb": 344036,
+      "smeb": 233020
+    },
+    {
+      "date": "2019-07-29",
+      "meb": 352564,
+      "smeb": 235377
+    },
+    {
+      "date": "2019-08-05",
+      "meb": 349658,
+      "smeb": 234679
+    },
+    {
+      "date": "2019-08-19",
+      "meb": 352442,
+      "smeb": 234042
+    },
+    {
+      "date": "2019-08-26",
+      "meb": 349891,
+      "smeb": 234717
+    },
+    {
+      "date": "2019-09-03",
+      "meb": 361144,
+      "smeb": 235903
+    },
+    {
+      "date": "2019-09-09",
+      "meb": 345829,
+      "smeb": 233647
+    },
+    {
+      "date": "2019-09-16",
+      "meb": 355206,
+      "smeb": 233617
+    },
+    {
+      "date": "2019-09-23",
+      "meb": 358536,
+      "smeb": 235743
+    },
+    {
+      "date": "2019-09-30",
+      "meb": 358904,
+      "smeb": 236774
+    },
+    {
+      "date": "2019-10-07",
+      "meb": 358030,
+      "smeb": 238210
+    },
+    {
+      "date": "2019-10-14",
+      "meb": 360903,
+      "smeb": 238861
+    },
+    {
+      "date": "2019-11-04",
+      "meb": 375393,
+      "smeb": 248938
+    },
+    {
+      "date": "2019-11-12",
+      "meb": 374186,
+      "smeb": 248994
+    },
+    {
+      "date": "2019-11-18",
+      "meb": 372878,
+      "smeb": 251925
+    },
+    {
+      "date": "2019-11-25",
+      "meb": 382538,
+      "smeb": 255833
+    },
+    {
+      "date": "2019-12-02",
+      "meb": 385106,
+      "smeb": 262473
+    },
+    {
+      "date": "2019-12-09",
+      "meb": 393344,
+      "smeb": 266843
+    },
+    {
+      "date": "2019-12-16",
+      "meb": 399650,
+      "smeb": 267732
+    },
+    {
+      "date": "2019-12-23",
+      "meb": 401316,
+      "smeb": 271230
+    },
+    {
+      "date": "2019-12-30",
+      "meb": 402472,
+      "smeb": 267963
+    },
+    {
+      "date": "2020-01-07",
+      "meb": 405358,
+      "smeb": 268183
+    },
+    {
+      "date": "2020-01-13",
+      "meb": 401291,
+      "smeb": 265458
+    },
+    {
+      "date": "2020-01-20",
+      "meb": 408328,
+      "smeb": 275145
+    },
+    {
+      "date": "2020-01-27",
+      "meb": 414842,
+      "smeb": 274960
+    },
+    {
+      "date": "2020-02-03",
+      "meb": 426781,
+      "smeb": 288175
+    },
+    {
+      "date": "2020-02-11",
+      "meb": 435064,
+      "smeb": 292719
+    },
+    {
+      "date": "2020-02-17",
+      "meb": 441686,
+      "smeb": 293346
+    },
+    {
+      "date": "2020-02-24",
+      "meb": 449996,
+      "smeb": 292963
+    },
+    {
+      "date": "2020-03-02",
+      "meb": 441235,
+      "smeb": 292049
+    },
+    {
+      "date": "2020-03-23",
+      "meb": 474408,
+      "smeb": 319936
+    },
+    {
+      "date": "2020-03-30",
+      "meb": 490104,
+      "smeb": 336767
+    },
+    {
+      "date": "2020-04-06",
+      "meb": 496896,
+      "smeb": 343312
+    },
+    {
+      "date": "2020-04-14",
+      "meb": 500350,
+      "smeb": 343608
+    },
+    {
+      "date": "2020-04-21",
+      "meb": 520231,
+      "smeb": 355389
+    },
+    {
+      "date": "2020-04-27",
+      "meb": 548147,
+      "smeb": 371277
+    },
+    {
+      "date": "2020-05-04",
+      "meb": 572536,
+      "smeb": 401700
+    },
+    {
+      "date": "2020-05-11",
+      "meb": 594954,
+      "smeb": 422893
+    },
+    {
+      "date": "2020-05-18",
+      "meb": 589771,
+      "smeb": 427478
+    },
+    {
+      "date": "2020-05-27",
+      "meb": 589277,
+      "smeb": 428129
+    },
+    {
+      "date": "2020-06-01",
+      "meb": 576853,
+      "smeb": 418666
+    },
+    {
+      "date": "2020-06-08",
+      "meb": 571293,
+      "smeb": 413333
+    },
+    {
+      "date": "2020-06-15",
+      "meb": 586048,
+      "smeb": 420519
+    },
+    {
+      "date": "2020-06-22",
+      "meb": 586912,
+      "smeb": 418869
+    },
+    {
+      "date": "2020-06-29",
+      "meb": 609958,
+      "smeb": 437827
+    },
+    {
+      "date": "2020-07-06",
+      "meb": 656725,
+      "smeb": 469215
+    },
+    {
+      "date": "2020-07-13",
+      "meb": 679805,
+      "smeb": 482386
+    },
+    {
+      "date": "2020-07-20",
+      "meb": 671536,
+      "smeb": 476093
+    },
+    {
+      "date": "2020-07-27",
+      "meb": 688051,
+      "smeb": 471495
+    },
+    {
+      "date": "2020-08-17",
+      "meb": 688198,
+      "smeb": 449616
+    },
+    {
+      "date": "2020-08-24",
+      "meb": 725035,
+      "smeb": 470075
+    },
+    {
+      "date": "2020-08-31",
+      "meb": 702211,
+      "smeb": 460847
+    },
+    {
+      "date": "2020-09-07",
+      "meb": 729068,
+      "smeb": 472439
+    },
+    {
+      "date": "2020-09-21",
+      "meb": 788028,
+      "smeb": 500591
+    },
+    {
+      "date": "2020-09-28",
+      "meb": 824141,
+      "smeb": 522865
+    },
+    {
+      "date": "2020-10-05",
+      "meb": 835226,
+      "smeb": 533708
+    },
+    {
+      "date": "2020-10-19",
+      "meb": 871037,
+      "smeb": 560830
+    },
+    {
+      "date": "2020-11-02",
+      "meb": 856511,
+      "smeb": 569769
+    },
+    {
+      "date": "2020-11-09",
+      "meb": 872574,
+      "smeb": 576246
+    },
+    {
+      "date": "2020-11-24",
+      "meb": 858499,
+      "smeb": 564262
+    },
+    {
+      "date": "2020-11-30",
+      "meb": 853122,
+      "smeb": 564142
+    },
+    {
+      "date": "2020-12-07",
+      "meb": 876200,
+      "smeb": 576553
+    },
+    {
+      "date": "2020-12-14",
+      "meb": 864000,
+      "smeb": 580173
+    },
+    {
+      "date": "2020-12-28",
+      "meb": 874137,
+      "smeb": 596817
+    },
+    {
+      "date": "2021-01-04",
+      "meb": 880684,
+      "smeb": 600412
+    },
+    {
+      "date": "2021-02-08",
+      "meb": 919219,
+      "smeb": 618953
+    },
+    {
+      "date": "2021-02-15",
+      "meb": 976728,
+      "smeb": 667009
+    },
+    {
+      "date": "2021-02-22",
+      "meb": 959195,
+      "smeb": 663624
+    },
+    {
+      "date": "2021-03-01",
+      "meb": 1017720,
+      "smeb": 722400
+    },
+    {
+      "date": "2021-03-08",
+      "meb": 1076814,
+      "smeb": 758708
+    },
+    {
+      "date": "2021-03-15",
+      "meb": 1104838,
+      "smeb": 763910
+    },
+    {
+      "date": "2021-03-22",
+      "meb": 1263812,
+      "smeb": 894922
+    },
+    {
+      "date": "2021-03-29",
+      "meb": 1347455,
+      "smeb": 955073
+    },
+    {
+      "date": "2021-04-06",
+      "meb": 1416431,
+      "smeb": 1023895
+    },
+    {
+      "date": "2021-04-12",
+      "meb": 1480392,
+      "smeb": 1061355
+    },
+    {
+      "date": "2021-04-19",
+      "meb": 1631868,
+      "smeb": 1170082
+    },
+    {
+      "date": "2021-04-26",
+      "meb": 1588132,
+      "smeb": 1157414
+    },
+    {
+      "date": "2021-05-04",
+      "meb": 1574079,
+      "smeb": 1157242
+    },
+    {
+      "date": "2021-05-17",
+      "meb": 1583551,
+      "smeb": 1170770
+    },
+    {
+      "date": "2021-05-24",
+      "meb": 1617227,
+      "smeb": 1181932
+    },
+    {
+      "date": "2021-05-31",
+      "meb": 1631749,
+      "smeb": 1206164
+    },
+    {
+      "date": "2021-06-07",
+      "meb": 1662921,
+      "smeb": 1224898
+    },
+    {
+      "date": "2021-06-14",
+      "meb": 1696778,
+      "smeb": 1241772
+    },
+    {
+      "date": "2021-06-21",
+      "meb": 1748878,
+      "smeb": 1268060
+    },
+    {
+      "date": "2021-06-28",
+      "meb": 1794220,
+      "smeb": 1305875
+    },
+    {
+      "date": "2021-07-12",
+      "meb": 1989171,
+      "smeb": 1463616
+    },
+    {
+      "date": "2021-07-26",
+      "meb": 2248552,
+      "smeb": 1579223
+    },
+    {
+      "date": "2021-08-02",
+      "meb": 2325964,
+      "smeb": 1666783
+    },
+    {
+      "date": "2021-08-10",
+      "meb": 2417011,
+      "smeb": 1712382
+    },
+    {
+      "date": "2021-08-23",
+      "meb": 2490457,
+      "smeb": 1771659
+    },
+    {
+      "date": "2021-08-30",
+      "meb": 2499628,
+      "smeb": 1794576
+    },
+    {
+      "date": "2021-09-06",
+      "meb": 2548196,
+      "smeb": 1838077
+    },
+    {
+      "date": "2021-09-13",
+      "meb": 2581322,
+      "smeb": 1836637
+    },
+    {
+      "date": "2021-09-20",
+      "meb": 2520572,
+      "smeb": 1782315
+    },
+    {
+      "date": "2021-09-27",
+      "meb": 2475688,
+      "smeb": 1707350
+    },
+    {
+      "date": "2021-10-11",
+      "meb": 2708044,
+      "smeb": 1872092
+    },
+    {
+      "date": "2021-10-19",
+      "meb": 2826122,
+      "smeb": 1966661
+    },
+    {
+      "date": "2021-10-25",
+      "meb": 2864504,
+      "smeb": 2015482
+    },
+    {
+      "date": "2021-11-01",
+      "meb": 2919405,
+      "smeb": 2060072
+    },
+    {
+      "date": "2021-11-08",
+      "meb": 2921416,
+      "smeb": 2087167
+    },
+    {
+      "date": "2021-11-15",
+      "meb": 2994372,
+      "smeb": 2153846
+    },
+    {
+      "date": "2021-11-29",
+      "meb": 3241791,
+      "smeb": 2354250
+    },
+    {
+      "date": "2021-12-06",
+      "meb": 3282047,
+      "smeb": 2389088
+    },
+    {
+      "date": "2021-12-13",
+      "meb": 3350465,
+      "smeb": 2416826
+    },
+    {
+      "date": "2021-12-20",
+      "meb": 3536649,
+      "smeb": 2571660
+    },
+    {
+      "date": "2021-12-27",
+      "meb": 3640904,
+      "smeb": 2594577
+    },
+    {
+      "date": "2022-01-10",
+      "meb": 4010794,
+      "smeb": 2899639
+    },
+    {
+      "date": "2022-01-17",
+      "meb": 4154589,
+      "smeb": 3036677
+    },
+    {
+      "date": "2022-01-24",
+      "meb": 4070356,
+      "smeb": 2984108
+    },
+    {
+      "date": "2022-01-31",
+      "meb": 3999261,
+      "smeb": 2871744
+    },
+    {
+      "date": "2022-02-07",
+      "meb": 3911840,
+      "smeb": 2745995
+    },
+    {
+      "date": "2022-02-15",
+      "meb": 3847765,
+      "smeb": 2686030
+    },
+    {
+      "date": "2022-02-21",
+      "meb": 3798963,
+      "smeb": 2645122
+    },
+    {
+      "date": "2022-02-28",
+      "meb": 3801024,
+      "smeb": 2639246
+    },
+    {
+      "date": "2022-03-07",
+      "meb": 3888187,
+      "smeb": 2679863
+    },
+    {
+      "date": "2022-03-14",
+      "meb": 4023421,
+      "smeb": 2761228
+    },
+    {
+      "date": "2022-03-21",
+      "meb": 4301742,
+      "smeb": 2845364
+    },
+    {
+      "date": "2022-04-04",
+      "meb": 4843409,
+      "smeb": 3029558
+    },
+    {
+      "date": "2022-04-19",
+      "meb": 4888351,
+      "smeb": 3074560
+    },
+    {
+      "date": "2022-04-26",
+      "meb": 4969806,
+      "smeb": 3200934
+    },
+    {
+      "date": "2022-05-09",
+      "meb": 5115224,
+      "smeb": 3397441
+    },
+    {
+      "date": "2022-05-16",
+      "meb": 5035008,
+      "smeb": 3468694
+    },
+    {
+      "date": "2022-05-23",
+      "meb": 5150182,
+      "smeb": 3627437
+    },
+    {
+      "date": "2022-05-30",
+      "meb": 5241702,
+      "smeb": 3750920
+    },
+    {
+      "date": "2022-06-06",
+      "meb": 5120822,
+      "smeb": 3734283
+    },
+    {
+      "date": "2022-06-20",
+      "meb": 5085210,
+      "smeb": 3677591
+    },
+    {
+      "date": "2022-07-04",
+      "meb": 4979604,
+      "smeb": 3546281
+    },
+    {
+      "date": "2022-07-18",
+      "meb": 5053435,
+      "smeb": 3575526
+    },
+    {
+      "date": "2022-08-01",
+      "meb": 5192095,
+      "smeb": 3581067
+    },
+    {
+      "date": "2022-08-08",
+      "meb": 5726827,
+      "smeb": 3951619
+    },
+    {
+      "date": "2022-08-22",
+      "meb": 6237871,
+      "smeb": 4206161
+    },
+    {
+      "date": "2022-08-29",
+      "meb": 6208469,
+      "smeb": 4277672
+    },
+    {
+      "date": "2022-09-05",
+      "meb": 6397518,
+      "smeb": 4354049
+    },
+    {
+      "date": "2022-09-12",
+      "meb": 6515056,
+      "smeb": 4487629
+    },
+    {
+      "date": "2022-09-19",
+      "meb": 6879407,
+      "smeb": 4742414
+    },
+    {
+      "date": "2022-09-26",
+      "meb": 7100275,
+      "smeb": 4934433
+    },
+    {
+      "date": "2022-10-03",
+      "meb": 7281162,
+      "smeb": 4986245
+    },
+    {
+      "date": "2022-10-17",
+      "meb": 7570386,
+      "smeb": 5288586
+    },
+    {
+      "date": "2022-10-24",
+      "meb": 7526239,
+      "smeb": 5307428
+    },
+    {
+      "date": "2022-10-31",
+      "meb": 7331408,
+      "smeb": 5266069
+    },
+    {
+      "date": "2022-11-07",
+      "meb": 7267405,
+      "smeb": 5201299
+    },
+    {
+      "date": "2022-11-14",
+      "meb": 7306108,
+      "smeb": 5207987
+    },
+    {
+      "date": "2022-11-21",
+      "meb": 7223324,
+      "smeb": 5226449
+    },
+    {
+      "date": "2022-11-28",
+      "meb": 7241928,
+      "smeb": 5205710
+    },
+    {
+      "date": "2022-12-05",
+      "meb": 7360014,
+      "smeb": 5310295
+    },
+    {
+      "date": "2022-12-12",
+      "meb": 7585238,
+      "smeb": 5403577
+    },
+    {
+      "date": "2022-12-27",
+      "meb": 7822855,
+      "smeb": 5615645
+    },
+    {
+      "date": "2023-01-03",
+      "meb": 7933811,
+      "smeb": 5686398
+    },
+    {
+      "date": "2023-01-16",
+      "meb": 8171526,
+      "smeb": 5846513
+    },
+    {
+      "date": "2023-01-23",
+      "meb": 8269641,
+      "smeb": 5869219
+    },
+    {
+      "date": "2023-01-30",
+      "meb": 9064389,
+      "smeb": 6573225
+    },
+    {
+      "date": "2023-02-13",
+      "meb": 10818000,
+      "smeb": 7761535
+    },
+    {
+      "date": "2023-02-27",
+      "meb": 13334644,
+      "smeb": 9731255
+    },
+    {
+      "date": "2023-03-06",
+      "meb": 13863129,
+      "smeb": 10194186
+    },
+    {
+      "date": "2023-03-20",
+      "meb": 18268362,
+      "smeb": 13489101
+    },
+    {
+      "date": "2023-03-27",
+      "meb": 19593103,
+      "smeb": 14121753
+    },
+    {
+      "date": "2023-04-03",
+      "meb": 18179492,
+      "smeb": 12733023
+    },
+    {
+      "date": "2023-04-11",
+      "meb": 18501704,
+      "smeb": 12804657
+    },
+    {
+      "date": "2023-04-18",
+      "meb": 18738447,
+      "smeb": 12924364
+    },
+    {
+      "date": "2023-04-25",
+      "meb": 18522920,
+      "smeb": 12857302
+    },
+    {
+      "date": "2023-05-02",
+      "meb": 18080135,
+      "smeb": 12742496
+    },
+    {
+      "date": "2023-05-08",
+      "meb": 17805613,
+      "smeb": 12819648
+    },
+    {
+      "date": "2023-05-15",
+      "meb": 17705153,
+      "smeb": 12863238
+    },
+    {
+      "date": "2023-05-22",
+      "meb": 17360956,
+      "smeb": 12841864
+    },
+    {
+      "date": "2023-06-05",
+      "meb": 16927197,
+      "smeb": 12600009
+    },
+    {
+      "date": "2023-06-12",
+      "meb": 17282158,
+      "smeb": 12693399
+    },
+    {
+      "date": "2023-06-19",
+      "meb": 17284793,
+      "smeb": 12680734
+    },
+    {
+      "date": "2023-07-03",
+      "meb": 17780500,
+      "smeb": 12570341
+    },
+    {
+      "date": "2023-07-10",
+      "meb": 18279640,
+      "smeb": 12849758
+    },
+    {
+      "date": "2023-07-17",
+      "meb": 18295677,
+      "smeb": 12809655
+    },
+    {
+      "date": "2023-07-24",
+      "meb": 18626555,
+      "smeb": 12994219
+    },
+    {
+      "date": "2023-07-31",
+      "meb": 18379958,
+      "smeb": 12667498
+    },
+    {
+      "date": "2023-08-07",
+      "meb": 18879007,
+      "smeb": 12822793
+    },
+    {
+      "date": "2023-08-14",
+      "meb": 19334737,
+      "smeb": 12835146
+    },
+    {
+      "date": "2023-08-28",
+      "meb": 19961058,
+      "smeb": 13105308
+    },
+    {
+      "date": "2023-09-04",
+      "meb": 20294839,
+      "smeb": 13287671
+    },
+    {
+      "date": "2023-09-11",
+      "meb": 20737225,
+      "smeb": 13465641
+    },
+    {
+      "date": "2023-09-25",
+      "meb": 20299797,
+      "smeb": 13206463
+    },
+    {
+      "date": "2023-10-02",
+      "meb": 20366351,
+      "smeb": 13215509
+    },
+    {
+      "date": "2023-10-23",
+      "meb": 19624028,
+      "smeb": 13032416
+    },
+    {
+      "date": "2023-11-06",
+      "meb": 19270040,
+      "smeb": 13054646
+    },
+    {
+      "date": "2023-11-13",
+      "meb": 18882527,
+      "smeb": 12936330
+    },
+    {
+      "date": "2023-11-20",
+      "meb": 19187543,
+      "smeb": 13107914
+    },
+    {
+      "date": "2023-12-04",
+      "meb": 19055445,
+      "smeb": 12948055
+    },
+    {
+      "date": "2023-12-11",
+      "meb": 19245229,
+      "smeb": 13020555
+    },
+    {
+      "date": "2023-12-18",
+      "meb": 19536985,
+      "smeb": 13241922
+    },
+    {
+      "date": "2023-12-26",
+      "meb": 20109502,
+      "smeb": 13303321
+    },
+    {
+      "date": "2024-01-02",
+      "meb": 20058693,
+      "smeb": 13275302
+    },
+    {
+      "date": "2024-01-08",
+      "meb": 20122181,
+      "smeb": 13366658
+    },
+    {
+      "date": "2024-01-15",
+      "meb": 20177104,
+      "smeb": 13411798
+    },
+    {
+      "date": "2024-01-22",
+      "meb": 20604060,
+      "smeb": 13279878
+    },
+    {
+      "date": "2024-02-05",
+      "meb": 21119791,
+      "smeb": 13461565
+    },
+    {
+      "date": "2024-02-12",
+      "meb": 21288237,
+      "smeb": 13399885
+    },
+    {
+      "date": "2024-02-19",
+      "meb": 20634101,
+      "smeb": 13134024
+    },
+    {
+      "date": "2024-03-04",
+      "meb": 20386482,
+      "smeb": 13149743
+    },
+    {
+      "date": "2024-03-11",
+      "meb": 21167168,
+      "smeb": 13166281
+    },
+    {
+      "date": "2024-03-18",
+      "meb": 20578392,
+      "smeb": 13178349
+    },
+    {
+      "date": "2024-03-26",
+      "meb": 20801904,
+      "smeb": 13254574
+    },
+    {
+      "date": "2024-04-02",
+      "meb": 20782660,
+      "smeb": 13339531
+    },
+    {
+      "date": "2024-04-15",
+      "meb": 20676386,
+      "smeb": 13407587
+    },
+    {
+      "date": "2024-04-22",
+      "meb": 19880942,
+      "smeb": 13351008
+    },
+    {
+      "date": "2024-05-07",
+      "meb": 19943823,
+      "smeb": 13275513
+    },
+    {
+      "date": "2024-05-13",
+      "meb": 19860881,
+      "smeb": 13469775
+    },
+    {
+      "date": "2024-05-20",
+      "meb": 19886476,
+      "smeb": 13820931
+    },
+    {
+      "date": "2024-05-27",
+      "meb": 20537427,
+      "smeb": 13998555
+    },
+    {
+      "date": "2024-06-03",
+      "meb": 20113204,
+      "smeb": 13865305
+    },
+    {
+      "date": "2024-06-10",
+      "meb": 20238772,
+      "smeb": 13917662
+    },
+    {
+      "date": "2024-06-17",
+      "meb": 20262879,
+      "smeb": 13652170
+    },
+    {
+      "date": "2024-06-24",
+      "meb": 19991541,
+      "smeb": 13520544
+    },
+    {
+      "date": "2024-07-01",
+      "meb": 20007290,
+      "smeb": 13479275
+    },
+    {
+      "date": "2024-07-09",
+      "meb": 20185057,
+      "smeb": 13422309
+    },
+    {
+      "date": "2024-07-15",
+      "meb": 20587761,
+      "smeb": 13606758
+    },
+    {
+      "date": "2024-07-22",
+      "meb": 20799995,
+      "smeb": 13687819
+    },
+    {
+      "date": "2024-08-05",
+      "meb": 21233303,
+      "smeb": 13673188
+    },
+    {
+      "date": "2024-08-12",
+      "meb": 21188616,
+      "smeb": 13646578
+    },
+    {
+      "date": "2024-08-19",
+      "meb": 21295236,
+      "smeb": 13684205
+    },
+    {
+      "date": "2024-08-26",
+      "meb": 21232456,
+      "smeb": 13776355
+    },
+    {
+      "date": "2024-09-17",
+      "meb": 20897684,
+      "smeb": 13775027
+    },
+    {
+      "date": "2024-09-23",
+      "meb": 21127204,
+      "smeb": 13748242
+    },
+    {
+      "date": "2024-10-01",
+      "meb": 21493524,
+      "smeb": 13949562
+    },
+    {
+      "date": "2024-10-07",
+      "meb": 21717614,
+      "smeb": 14136190
+    },
+    {
+      "date": "2024-10-14",
+      "meb": 21406596,
+      "smeb": 14169616
+    },
+    {
+      "date": "2024-10-21",
+      "meb": 20980412,
+      "smeb": 14012665
+    },
+    {
+      "date": "2024-10-28",
+      "meb": 20908091,
+      "smeb": 13816979
+    },
+    {
+      "date": "2024-11-04",
+      "meb": 21288429,
+      "smeb": 13996020
+    },
+    {
+      "date": "2024-11-11",
+      "meb": 20978827,
+      "smeb": 14007098
+    },
+    {
+      "date": "2024-11-18",
+      "meb": 20943016,
+      "smeb": 13960829
+    },
+    {
+      "date": "2024-11-25",
+      "meb": 20864569,
+      "smeb": 14000920
+    },
+    {
+      "date": "2024-12-02",
+      "meb": 21213944,
+      "smeb": 14077034
+    },
+    {
+      "date": "2024-12-09",
+      "meb": 21521341,
+      "smeb": 14042711
+    },
+    {
+      "date": "2024-12-16",
+      "meb": 21508851,
+      "smeb": 14034842
+    },
+    {
+      "date": "2025-01-07",
+      "meb": 21385144,
+      "smeb": 13988971
+    },
+    {
+      "date": "2025-01-13",
+      "meb": 21445423,
+      "smeb": 14094931
+    },
+    {
+      "date": "2025-01-20",
+      "meb": 21041515,
+      "smeb": 14066033
+    },
+    {
+      "date": "2025-01-27",
+      "meb": 20982482,
+      "smeb": 14046690
+    },
+    {
+      "date": "2025-02-03",
+      "meb": 20929421,
+      "smeb": 13982206
+    },
+    {
+      "date": "2025-02-11",
+      "meb": 21073107,
+      "smeb": 13979906
+    },
+    {
+      "date": "2025-02-17",
+      "meb": 21704536,
+      "smeb": 14206940
+    },
+    {
+      "date": "2025-02-24",
+      "meb": 21911934,
+      "smeb": 14217820
+    },
+    {
+      "date": "2025-03-03",
+      "meb": 23208496,
+      "smeb": 14120419
+    },
+    {
+      "date": "2025-03-11",
+      "meb": 22961665,
+      "smeb": 13991742
+    },
+    {
+      "date": "2025-03-17",
+      "meb": 22666134,
+      "smeb": 14036431
+    },
+    {
+      "date": "2025-04-02",
+      "meb": 23048991,
+      "smeb": 14125066
+    },
+    {
+      "date": "2025-04-07",
+      "meb": 22399819,
+      "smeb": 14061300
+    },
+    {
+      "date": "2025-04-14",
+      "meb": 23058449,
+      "smeb": 14318585
+    },
+    {
+      "date": "2025-04-22",
+      "meb": 23151503,
+      "smeb": 14361480
+    },
+    {
+      "date": "2025-04-28",
+      "meb": 23548557,
+      "smeb": 14513238
+    },
+    {
+      "date": "2025-05-05",
+      "meb": 23205717,
+      "smeb": 14653309
+    },
+    {
+      "date": "2025-05-12",
+      "meb": 23475823,
+      "smeb": 14828788
+    },
+    {
+      "date": "2025-05-19",
+      "meb": 23026069,
+      "smeb": 14918887
+    },
+    {
+      "date": "2025-05-26",
+      "meb": 22696822,
+      "smeb": 14896581
+    },
+    {
+      "date": "2025-06-02",
+      "meb": 22054231,
+      "smeb": 14528628
+    },
+    {
+      "date": "2025-06-10",
+      "meb": 22503384,
+      "smeb": 14593758
+    },
+    {
+      "date": "2025-06-16",
+      "meb": 21769468,
+      "smeb": 14293369
+    },
+    {
+      "date": "2025-06-23",
+      "meb": 22015281,
+      "smeb": 14240261
+    },
+    {
+      "date": "2025-07-01",
+      "meb": 22074674,
+      "smeb": 14119917
+    },
+    {
+      "date": "2025-07-08",
+      "meb": 22505787,
+      "smeb": 14360129
+    },
+    {
+      "date": "2025-07-14",
+      "meb": 22315641,
+      "smeb": 14162353
+    },
+    {
+      "date": "2025-07-21",
+      "meb": 22680707,
+      "smeb": 14386747
+    },
+    {
+      "date": "2025-07-28",
+      "meb": 22986990,
+      "smeb": 14509452
+    },
+    {
+      "date": "2025-08-05",
+      "meb": 23201047,
+      "smeb": 14500367
+    },
+    {
+      "date": "2025-08-11",
+      "meb": 22938294,
+      "smeb": 14284361
+    },
+    {
+      "date": "2025-08-18",
+      "meb": 24227573,
+      "smeb": 14626144
+    },
+    {
+      "date": "2025-08-25",
+      "meb": 24552616,
+      "smeb": 14718300
+    },
+    {
+      "date": "2025-09-01",
+      "meb": 24482042,
+      "smeb": 14848006
+    },
+    {
+      "date": "2025-09-08",
+      "meb": 24592225,
+      "smeb": 14863527
+    },
+    {
+      "date": "2025-09-15",
+      "meb": 24243558,
+      "smeb": 14771892
+    },
+    {
+      "date": "2025-09-22",
+      "meb": 23844288,
+      "smeb": 14772326
+    },
+    {
+      "date": "2025-09-29",
+      "meb": 23313821,
+      "smeb": 14653200
+    },
+    {
+      "date": "2025-10-06",
+      "meb": 23460454,
+      "smeb": 14812007
+    },
+    {
+      "date": "2025-10-20",
+      "meb": 24074633,
+      "smeb": 14772639
+    },
+    {
+      "date": "2025-10-27",
+      "meb": 24217549,
+      "smeb": 14827180
+    },
+    {
+      "date": "2025-11-03",
+      "meb": 23964274,
+      "smeb": 14651070
+    },
+    {
+      "date": "2025-11-10",
+      "meb": 24052613,
+      "smeb": 14993007
+    },
+    {
+      "date": "2025-11-17",
+      "meb": 24290001,
+      "smeb": 14997831
+    },
+    {
+      "date": "2025-11-25",
+      "meb": 24174914,
+      "smeb": 14934696
+    },
+    {
+      "date": "2025-12-03",
+      "meb": 23429223,
+      "smeb": 14959049
+    },
+    {
+      "date": "2025-12-08",
+      "meb": 23321183,
+      "smeb": 15012479
+    },
+    {
+      "date": "2025-12-15",
+      "meb": 23001370,
+      "smeb": 14992447
+    },
+    {
+      "date": "2025-12-29",
+      "meb": 23864398,
+      "smeb": 15021493
+    },
+    {
+      "date": "2026-01-05",
+      "meb": 23702118,
+      "smeb": 14957705
+    },
+    {
+      "date": "2026-01-12",
+      "meb": 23676182,
+      "smeb": 14687990
+    },
+    {
+      "date": "2026-01-19",
+      "meb": 23928948,
+      "smeb": 15012247
+    },
+    {
+      "date": "2026-01-26",
+      "meb": 24381377,
+      "smeb": 14969492
+    },
+    {
+      "date": "2026-02-02",
+      "meb": 24849318,
+      "smeb": 15021277
+    },
+    {
+      "date": "2026-02-10",
+      "meb": 24288056,
+      "smeb": 14595616
+    },
+    {
+      "date": "2026-02-16",
+      "meb": 24192649,
+      "smeb": 14620987
+    },
+    {
+      "date": "2026-02-23",
+      "meb": 24546552,
+      "smeb": 14734379
+    },
+    {
+      "date": "2026-03-02",
+      "meb": 25141675,
+      "smeb": 14801192
+    },
+    {
+      "date": "2026-03-09",
+      "meb": 25803566,
+      "smeb": 15127992
+    },
+    {
+      "date": "2026-03-16",
+      "meb": 26358699,
+      "smeb": 15325799
+    },
+    {
+      "date": "2026-03-23",
+      "meb": 26223479,
+      "smeb": 15428604
+    },
+    {
+      "date": "2026-03-30",
+      "meb": 25724012,
+      "smeb": 15350046
     }
   ]
 }

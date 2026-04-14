@@ -1,107 +1,147 @@
+import csv
 import json
-import re
-from datetime import datetime, timedelta
+import sys
+from datetime import datetime
 from pathlib import Path
 
-import pandas as pd
-
-EXCEL_FILE = Path("data/weekly-basket-report-23-03-2026-EN.xlsx")
+CSV_FILE = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("data/ministry_smeb_item_priced.csv")
 OUTPUT_FILE = Path("data/foodbasket.json")
 
-
-def clean(val):
-    return None if pd.isna(val) else val
+CATEGORY_MAP = {
+    "Apples":        ("Fr",   "Fruits"),
+    "Banana":        ("Fr",   "Fruits"),
+    "Oranges":       ("Fr",   "Fruits"),
+    "Cabbage":       ("V",    "Vegetables"),
+    "Carrots":       ("V",    "Vegetables"),
+    "Cucumber":      ("V",    "Vegetables"),
+    "Onion":         ("V",    "Vegetables"),
+    "Parsley":       ("V",    "Vegetables"),
+    "Potatoes":      ("V",    "Vegetables"),
+    "Tomato":        ("V",    "Vegetables"),
+    "Zucchini":      ("V",    "Vegetables"),
+    "Chickpeas":     ("G",    "Grains & Pulses"),
+    "Lentils":       ("G",    "Grains & Pulses"),
+    "Rice":          ("G",    "Grains & Pulses"),
+    "White Beans":   ("G",    "Grains & Pulses"),
+    "Fresh Chicken": ("M",    "Meat"),
+    "Eggs":          ("D",    "Eggs & Dairy"),
+    "Powdered Milk": ("D",    "Eggs & Dairy"),
+    "Sunflower Oil": ("O",    "Fats & Oils"),
+    "Tahini":        ("O",    "Fats & Oils"),
+    "Salt":          ("Misc", "Miscellaneous"),
+    "Sugar":         ("Misc", "Miscellaneous"),
+    "Tea":           ("Misc", "Miscellaneous"),
+    "Tomato Paste":  ("Misc", "Miscellaneous"),
+    "Sardine":       ("C",    "Canned Goods"),
+}
 
 
 def pct_change(a, b):
     return round((a - b) / b * 100, 2) if a and b else None
 
 
-def parse_report_date(path: Path) -> datetime:
-    m = re.search(r"(\d{2})-(\d{2})-(\d{4})", path.stem)
-    if not m:
-        raise ValueError(f"Cannot parse date from filename: {path.name}")
-    return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+def fmt_unit(quantity, unit):
+    qty = float(quantity)
+    qty_str = str(int(qty)) if qty == int(qty) else str(qty)
+    return f"{qty_str} {unit}"
+
+
+def fmt_date(d):
+    return datetime.strptime(d, "%Y-%m-%d").strftime("%-d %b %Y")
 
 
 def main():
-    df = pd.read_excel(
-        EXCEL_FILE,
-        sheet_name="Supermarkets",
-        header=11,
-        engine="openpyxl",
-    )
+    with open(CSV_FILE, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
 
-    cols = list(df.columns)
-    rename = {
-        cols[0]: "category_name",
-        cols[1]: "code",
-        cols[2]: "name_en",
-        cols[3]: "unit",
-        cols[4]: "price_mar2025",
-        cols[5]: "price_current",
-        cols[6]: "yoy_pct",
-        cols[7]: "price_prev_week",
-        cols[8]: "wow_pct",
-    }
-    df = df.rename(columns=rename)
+    dates = sorted(set(r["Reporting_Month"] for r in rows))
+    date_current = dates[-1]
+    date_prev_week = dates[-2]
+
+    current_dt = datetime.strptime(date_current, "%Y-%m-%d")
+    target_yoy = current_dt.replace(year=current_dt.year - 1)
+    date_yoy = min(dates, key=lambda d: abs(datetime.strptime(d, "%Y-%m-%d") - target_yoy))
+
+    # price_lbp_l_kg: per-kg/L normalised price — consistent unit for WoW/YoY
+    prices = {}
+    item_meta = {}
+    for r in rows:
+        item = r["mnsty_item"]
+        date = r["Reporting_Month"]
+        prices.setdefault(item, {})[date] = float(r["price_lbp_l_kg"])
+        if item not in item_meta:
+            item_meta[item] = {
+                "smeb_item": r["smeb_item"],
+                "basket": r["baskett"],
+                "unit": fmt_unit(r["quantity"], r["unit"]),
+            }
 
     items = []
-    current_cat_code = None
-    current_cat_name_en = None
-
-    for _, row in df.iterrows():
-        code = row.get("code")
-        if pd.isna(code):
+    for name, (cat_code, cat_en) in CATEGORY_MAP.items():
+        if name not in prices:
             continue
-
-        code = str(code).strip()
-
-        # Product row: letters + space + digits (e.g. "V 1", "Fr 1", "Misc 1")
-        if not re.match(r"^[A-Za-z]+\s+\d+$", code):
-            current_cat_code = code
-            current_cat_name_en = str(row.get("category_name", "")).strip()
+        p = prices[name]
+        price_current = p.get(date_current)
+        if price_current is None:
             continue
-
-        price_current = clean(row.get("price_current"))
-        price_prev_week = clean(row.get("price_prev_week"))
-        price_mar2025 = clean(row.get("price_mar2025"))
-
+        price_prev = p.get(date_prev_week)
+        price_yoy = p.get(date_yoy)
+        meta = item_meta[name]
         items.append({
-            "code": code,
-            "name_en": str(row.get("name_en", "")).strip(),
-            "category_code": current_cat_code,
-            "category_en": current_cat_name_en,
+            "code": name,
+            "name_en": name,
+            "category_code": cat_code,
+            "category_en": cat_en,
+            "basket": meta["basket"],
+            "smeb_item": meta["smeb_item"],
             "price_current": price_current,
-            "price_prev_week": price_prev_week,
-            "price_mar2025": price_mar2025,
-            "wow_pct": pct_change(price_current, price_prev_week),
-            "yoy_pct": pct_change(price_current, price_mar2025),
-            "unit": str(row.get("unit", "")).strip(),
+            "price_prev_week": price_prev,
+            "price_yoy": price_yoy,
+            "wow_pct": pct_change(price_current, price_prev),
+            "yoy_pct": pct_change(price_current, price_yoy),
+            "unit": meta["unit"],
         })
 
     items.sort(key=lambda x: (x["wow_pct"] is None, -(x["wow_pct"] or 0)))
 
-    report_date = parse_report_date(EXCEL_FILE)
-    prev_date = report_date - timedelta(weeks=1)
+    # Build weekly basket totals for time series using pre-computed basket costs
+    # MEB total = all items (both "Food MEB" and "Food SMEB")
+    # SMEB total = only "Food SMEB" items
+    weekly_meb = {}
+    weekly_smeb = {}
+    for r in rows:
+        date = r["Reporting_Month"]
+        cost = float(r["ministry_smeb_price_lbp"])
+        weekly_meb[date] = weekly_meb.get(date, 0) + cost
+        if r["baskett"] == "Food SMEB":
+            weekly_smeb[date] = weekly_smeb.get(date, 0) + cost
+
+    timeseries = [
+        {"date": d, "meb": round(weekly_meb[d]), "smeb": round(weekly_smeb.get(d, 0))}
+        for d in sorted(weekly_meb)
+    ]
 
     output = {
         "meta": {
-            "title": "Lebanon: Week-over-Week Price Change by Commodity",
-            "subtitle": "Supermarkets",
-            "date_current": report_date.strftime("%-d %b %Y"),
-            "date_previous": prev_date.strftime("%-d %b %Y"),
+            "subtitle": "Ministry of Economy MEB/SMEB basket",
+            "date_current": fmt_date(date_current),
+            "date_previous": fmt_date(date_prev_week),
+            "date_yoy": fmt_date(date_yoy),
             "source": "Lebanon Ministry of Economy and Trade \u2013 Price Policy Technical Office",
             "generated": datetime.today().strftime("%Y-%m-%d"),
         },
         "items": items,
+        "timeseries": timeseries,
     }
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"Written {len(items)} items to {OUTPUT_FILE}")
+    print(f"Written {len(items)} items → {OUTPUT_FILE}")
+    print(f"  Current:   {date_current}")
+    print(f"  Prev week: {date_prev_week}")
+    print(f"  YoY ref:   {date_yoy}")
 
 
 if __name__ == "__main__":

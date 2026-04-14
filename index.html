@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lebanon Food Basket — Price Change</title>
+  <title>Lebanon Food Basket Prices</title>
   <link rel="icon" type="image/png" sizes="32x32" href="https://data.humdata.org/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://data.humdata.org/favicon-16x16.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@
 
     main {
       padding: 24px;
-      max-width: 100%;
+      max-width: 1200px;
     }
 
     #controls {
@@ -235,16 +235,59 @@
       border-top: 1px solid #f0f0f0;
       margin-top: 4px;
     }
+
+    #timeseries-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 2px;
+      padding: 16px 16px 12px;
+      width: 100%;
+      min-width: 0;
+      margin-top: 24px;
+    }
+
+    #timeseries-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    #timeseries-legend {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .ts-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ts-legend-swatch {
+      width: 24px;
+      height: 2px;
+      flex-shrink: 0;
+    }
+
+    #timeseries-svg {
+      width: 100%;
+      overflow: visible;
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Lebanon: Price Change by Commodity</h1>
+  <h1>Lebanon Food Basket Prices</h1>
+  <p class="subtitle">Source: Ministry of Economy and Trade - Technical Office for Price Policy &nbsp;&middot;&nbsp; Weekly, Dec 2018 - Mar 2026</p>
 </header>
 
 <main>
-  <p class="description">This chart shows week-over-week and year-over-year price changes for 60 food commodities tracked by Lebanon's Ministry of Economy and Trade. Bars extending right indicate price increases and bars extending left indicate decreases. Use the category and percent change filters to explore specific food groups or price movements.</p>
+  <p class="description">This chart shows week-over-week and year-over-year price changes for 25 food commodities in Lebanon's Ministry of Economy and Trade MEB/SMEB basket. Prices are normalised to LBP per kg or litre. Bars extending right indicate price increases and bars extending left indicate decreases. Use the category and percent change filters to explore specific food groups or price movements.</p>
   <div id="metric-toggle" style="margin-bottom:16px;">
     <div class="filter-label" style="margin-bottom:6px;">View</div>
     <div class="btn-row">
@@ -299,6 +342,10 @@
     <div id="no-results">No commodities match the current filters.</div>
     <div id="card-source"><span id="source-note"></span></div>
   </div>
+  <div id="timeseries-card">
+    <div id="timeseries-title">Weekly basket total cost (LBP)</div>
+    <svg id="timeseries-svg"></svg>
+  </div>
 </main>
 
 <footer></footer>
@@ -321,7 +368,7 @@ const METRIC_CONFIG = {
   },
   yoy: {
     title: 'Lebanon: Year-over-Year Price Change by Commodity',
-    subtitleFn: m => `${m.subtitle} (${m.date_current.replace('2026', '2025')} – ${m.date_current})`,
+    subtitleFn: m => `${m.subtitle} (${m.date_yoy} – ${m.date_current})`,
     field: 'yoy_pct',
     tooltipLabel: 'YoY change',
   },
@@ -528,9 +575,9 @@ fetch('data/foodbasket.json')
             .html(`
               <strong>${d.name_en}</strong><br>
               ${cfg.tooltipLabel}: <strong style="color:${v > 0 ? COLOR_POS : COLOR_NEG}">${fmt(v)}</strong><br>
-              This week: ${fmtLBP(d.price_current)}<br>
-              Last week: ${fmtLBP(d.price_prev_week)}<br>
-              Last year: ${fmtLBP(d.price_mar2025)}
+              This week: ${fmtLBP(d.price_current)}/kg<br>
+              Last week: ${fmtLBP(d.price_prev_week)}/kg<br>
+              Year ago: ${fmtLBP(d.price_yoy)}/kg
 
             `)
             .style('left', (event.clientX + 14) + 'px')
@@ -606,6 +653,150 @@ fetch('data/foodbasket.json')
     new ResizeObserver(entries => {
       draw(entries[0].contentRect.width, getFilteredItems());
     }).observe(card);
+
+    // --- Time series chart ---
+    if (data.timeseries && data.timeseries.length > 0) {
+      const tsData = data.timeseries.map(d => ({
+        date: new Date(d.date),
+        meb: d.meb,
+        smeb: d.smeb,
+      }));
+
+      const COLOR_MEB = '#5B8DB8';
+      const COLOR_SMEB = '#E07B39';
+      const TS_MARGIN = { top: 20, right: 70, bottom: 36, left: 70 };
+
+      const tsSvg = d3.select('#timeseries-svg');
+      const tsCard = document.getElementById('timeseries-card');
+
+      function fmtM(n) {
+        if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M';
+        if (n >= 1e3) return (n / 1e3).toFixed(0) + 'K';
+        return n;
+      }
+
+      function drawTimeseries(containerW) {
+        tsSvg.selectAll('*').remove();
+
+        const innerW = Math.max(containerW - TS_MARGIN.left - TS_MARGIN.right, 100);
+        const innerH = 240;
+        const svgH = TS_MARGIN.top + innerH + TS_MARGIN.bottom;
+
+        tsSvg.attr('width', containerW).attr('height', svgH);
+
+        const g = tsSvg.append('g')
+          .attr('transform', `translate(${TS_MARGIN.left},${TS_MARGIN.top})`);
+
+        const xScale = d3.scaleTime()
+          .domain(d3.extent(tsData, d => d.date))
+          .range([0, innerW]);
+
+        const yMax = d3.max(tsData, d => Math.max(d.meb, d.smeb));
+        const yScale = d3.scaleLinear()
+          .domain([0, yMax * 1.05])
+          .range([innerH, 0])
+          .nice();
+
+        // Grid lines
+        const yTicks = yScale.ticks(5);
+        g.selectAll('.ts-grid')
+          .data(yTicks)
+          .join('line')
+          .attr('class', 'ts-grid')
+          .attr('x1', 0).attr('x2', innerW)
+          .attr('y1', d => yScale(d)).attr('y2', d => yScale(d))
+          .attr('stroke', '#e8e8e8')
+          .attr('stroke-dasharray', '3,3');
+
+        // Y-axis
+        g.append('g')
+          .call(d3.axisLeft(yScale)
+            .ticks(5)
+            .tickFormat(fmtM)
+            .tickSizeOuter(0)
+            .tickSizeInner(0))
+          .call(ax => ax.select('.domain').remove())
+          .call(ax => ax.selectAll('.tick text')
+            .attr('x', -8)
+            .style('font-size', '11px')
+            .style('fill', '#888'));
+
+        // X-axis
+        g.append('g')
+          .attr('transform', `translate(0,${innerH})`)
+          .call(d3.axisBottom(xScale)
+            .ticks(d3.timeYear.every(1))
+            .tickFormat(d3.timeFormat('%Y'))
+            .tickSizeOuter(0)
+            .tickSizeInner(4))
+          .call(ax => ax.select('.domain').attr('stroke', '#e0e0e0'))
+          .call(ax => ax.selectAll('.tick line').attr('stroke', '#e0e0e0'))
+          .call(ax => ax.selectAll('.tick text')
+            .style('font-size', '11px')
+            .style('fill', '#888'));
+
+        // Lines
+        const lineFn = key => d3.line()
+          .defined(d => d[key] > 0)
+          .x(d => xScale(d.date))
+          .y(d => yScale(d[key]))
+          .curve(d3.curveMonotoneX);
+
+        g.append('path')
+          .datum(tsData)
+          .attr('fill', 'none')
+          .attr('stroke', COLOR_MEB)
+          .attr('stroke-width', 1.5)
+          .attr('d', lineFn('meb'));
+
+        g.append('path')
+          .datum(tsData)
+          .attr('fill', 'none')
+          .attr('stroke', COLOR_SMEB)
+          .attr('stroke-width', 1.5)
+          .attr('d', lineFn('smeb'));
+
+        // End-of-line labels
+        const last = tsData[tsData.length - 1];
+        g.append('text')
+          .attr('x', xScale(last.date) + 6)
+          .attr('y', yScale(last.meb) + 4)
+          .attr('font-size', '11px')
+          .attr('fill', COLOR_MEB)
+          .attr('font-weight', '600')
+          .text(fmtM(last.meb));
+
+        g.append('text')
+          .attr('x', xScale(last.date) + 6)
+          .attr('y', yScale(last.smeb) + 4)
+          .attr('font-size', '11px')
+          .attr('fill', COLOR_SMEB)
+          .attr('font-weight', '600')
+          .text(fmtM(last.smeb));
+
+        // Legend
+        const legendG = tsSvg.append('g')
+          .attr('transform', `translate(${TS_MARGIN.left},${svgH - 4})`);
+
+        [[COLOR_MEB, 'MEB'], [COLOR_SMEB, 'SMEB']].forEach(([color, label], i) => {
+          const lx = i * 80;
+          legendG.append('line')
+            .attr('x1', lx).attr('x2', lx + 20)
+            .attr('y1', 0).attr('y2', 0)
+            .attr('stroke', color).attr('stroke-width', 2);
+          legendG.append('text')
+            .attr('x', lx + 24).attr('y', 4)
+            .attr('font-size', '11px').attr('fill', '#555')
+            .text(label);
+        });
+      }
+
+      drawTimeseries(tsCard.clientWidth);
+
+      new ResizeObserver(entries => {
+        drawTimeseries(entries[0].contentRect.width);
+      }).observe(tsCard);
+    }
   });
 </script>
 </body>
